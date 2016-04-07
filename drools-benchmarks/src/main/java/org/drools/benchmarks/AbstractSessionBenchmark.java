@@ -18,8 +18,10 @@ package org.drools.benchmarks;
 
 import java.util.concurrent.TimeUnit;
 
-import org.kie.api.KieBase;
-import org.kie.api.runtime.KieSession;
+import org.drools.KnowledgeBase;
+import org.drools.KnowledgeBaseFactory;
+import org.drools.runtime.StatefulKnowledgeSession;
+import org.drools.runtime.StatelessKnowledgeSession;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
@@ -40,20 +42,31 @@ public abstract class AbstractSessionBenchmark {
     protected boolean holdSessionReferences = false;
     protected boolean reuseKieBase = false;
 
-    protected KieBase kieBase;
-    protected KieSession kieSession;
+    protected KnowledgeBase kieBase;
+    protected StatefulKnowledgeSession statefulSession;
+    protected StatelessKnowledgeSession statelessSession;
 
     public abstract void setup();
 
     @TearDown(Level.Iteration)
     public void tearDown() {
-        if (kieSession != null) {
-            kieSession.dispose();
+        if (statefulSession != null) {
+            statefulSession.dispose();
+            statefulSession = null;
         }
+        statelessSession = null;
     }
 
-    protected void createKieSession() {
-        kieSession = kieBase.newKieSession();
+    protected void createStatefulSession() {
+        statefulSession = kieBase.newStatefulKnowledgeSession();
+    }
+
+    protected void createStatelessSession() {
+        statelessSession = kieBase.newStatelessKnowledgeSession();
+    }
+
+    protected void createEmptyKieBase() {
+        kieBase = KnowledgeBaseFactory.newKnowledgeBase();
     }
 
 }

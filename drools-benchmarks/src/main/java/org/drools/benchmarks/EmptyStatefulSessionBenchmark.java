@@ -16,22 +16,22 @@
 
 package org.drools.benchmarks;
 
-import org.drools.benchmarks.util.TestUtil;
-import org.kie.internal.utils.KieHelper;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
+import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Setup;
 
-public class EmptySessionBenchmark extends AbstractSessionBenchmark {
+@Measurement(iterations = 100)
+public class EmptyStatefulSessionBenchmark extends AbstractSessionBenchmark {
 
     @Setup(Level.Iteration)
     @Override
     public void setup() {
-        kieBase = new KieHelper().build(TestUtil.getKieBaseConfiguration());
+        createEmptyKieBase();
     }
 
     @Benchmark
     public void testCreateEmptySession() {
-        createKieSession();
+        createStatefulSession();
     }
 }
