@@ -63,7 +63,7 @@ public class UpdateJoinRootFactAndFireBenchmark extends AbstractSessionBenchmark
 
         String drl = sb.toString();
 
-        createKieBaseFromString(drl);
+        createKieBaseFromDrl(drl);
 
         createKieSession();
     }

@@ -66,7 +66,7 @@ public class UpdatesOnJoinBenchmark extends AbstractSessionBenchmark {
         }
         String drl = sb.toString();
 
-        createKieBaseFromString(drl);
+        createKieBaseFromDrl(drl);
 
         createKieSession();
 

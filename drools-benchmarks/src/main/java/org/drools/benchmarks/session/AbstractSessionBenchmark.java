@@ -76,7 +76,7 @@ public abstract class AbstractSessionBenchmark {
         kieBase = KnowledgeBaseFactory.newKnowledgeBase();
     }
 
-    protected void createKieBaseFromString(final String drl) {
+    protected void createKieBaseFromDrl(final String drl) {
         final KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
         kbuilder.add(ResourceFactory.newReaderResource(new StringReader(drl)),
                 ResourceType.DRL);
