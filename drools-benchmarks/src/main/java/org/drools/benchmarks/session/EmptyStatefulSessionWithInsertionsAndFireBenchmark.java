@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Red Hat, Inc. and/or its affiliates.
+ * Copyright 2015 Red Hat, Inc. and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,17 +36,17 @@ public class EmptyStatefulSessionWithInsertionsAndFireBenchmark extends Abstract
 
     @Benchmark
     public void testCreateEmptySession() {
-        createStatefulSession();
-        statefulSession.insert( "1" );
-        statefulSession.insert( new Integer(1) );
-        statefulSession.insert( new Long(1L) );
-        statefulSession.insert( new Short((short)1) );
-        statefulSession.insert( new Double(1.0) );
-        statefulSession.insert( new Float(1.0) );
-        statefulSession.insert( new Character('1') );
-        statefulSession.insert( Boolean.TRUE );
-        statefulSession.insert( String.class );
-        statefulSession.insert( new Date() );
-        statefulSession.fireAllRules();
+        createKieSession();
+        kieSession.insert( "1" );
+        kieSession.insert( new Integer(1) );
+        kieSession.insert( new Long(1L) );
+        kieSession.insert( new Short((short)1) );
+        kieSession.insert( new Double(1.0) );
+        kieSession.insert( new Float(1.0) );
+        kieSession.insert( new Character('1') );
+        kieSession.insert( Boolean.TRUE );
+        kieSession.insert( String.class );
+        kieSession.insert( new Date() );
+        kieSession.fireAllRules();
     }
 }

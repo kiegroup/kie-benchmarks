@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Red Hat, Inc. and/or its affiliates.
+ * Copyright 2015 Red Hat, Inc. and/or its affiliates.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,11 @@ package org.drools.benchmarks.session;
 
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderError;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
+import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.StatelessKnowledgeSession;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -30,6 +35,8 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
+import java.io.StringReader;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.SingleShotTime)
@@ -43,22 +50,22 @@ public abstract class AbstractSessionBenchmark {
     protected boolean reuseKieBase = false;
 
     protected KnowledgeBase kieBase;
-    protected StatefulKnowledgeSession statefulSession;
+    protected StatefulKnowledgeSession kieSession;
     protected StatelessKnowledgeSession statelessSession;
 
     public abstract void setup();
 
     @TearDown(Level.Iteration)
     public void tearDown() {
-        if (statefulSession != null) {
-            statefulSession.dispose();
-            statefulSession = null;
+        if (kieSession != null) {
+            kieSession.dispose();
+            kieSession = null;
         }
         statelessSession = null;
     }
 
-    protected void createStatefulSession() {
-        statefulSession = kieBase.newStatefulKnowledgeSession();
+    protected void createKieSession() {
+        kieSession = kieBase.newStatefulKnowledgeSession();
     }
 
     protected void createStatelessSession() {
@@ -69,4 +76,23 @@ public abstract class AbstractSessionBenchmark {
         kieBase = KnowledgeBaseFactory.newKnowledgeBase();
     }
 
+    protected void createKieBaseFromString(final String drl) {
+        final KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+        kbuilder.add(ResourceFactory.newReaderResource(new StringReader(drl)),
+                ResourceType.DRL);
+
+        if (kbuilder.hasErrors()) {
+            final String lineSeparator = System.getProperty("line.separator");
+            final StringBuilder errorsBuilder = new StringBuilder();
+            final Iterator<KnowledgeBuilderError> errors = kbuilder.getErrors().iterator();
+            while (errors.hasNext()) {
+                errorsBuilder.append("kbuilder error: " + errors.next().getMessage());
+                errorsBuilder.append(lineSeparator);
+            }
+            throw new IllegalStateException("DRL contains errors: " + errorsBuilder.toString());
+        }
+
+        kieBase = KnowledgeBaseFactory.newKnowledgeBase();
+        kieBase.addKnowledgePackages(kbuilder.getKnowledgePackages());
+    }
 }
