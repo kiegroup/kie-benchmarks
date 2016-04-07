@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package org.drools.benchmarks;
+package org.drools.benchmarks.session;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.Warmup;
 
+import java.util.Date;
+
+@Warmup(iterations = 100)
 @Measurement(iterations = 100)
-public class EmptyStatefulSessionBenchmark extends AbstractSessionBenchmark {
+public class EmptyStatefulSessionWithInsertionsAndFireBenchmark extends AbstractSessionBenchmark {
 
     @Setup(Level.Iteration)
     @Override
@@ -33,5 +37,16 @@ public class EmptyStatefulSessionBenchmark extends AbstractSessionBenchmark {
     @Benchmark
     public void testCreateEmptySession() {
         createStatefulSession();
+        statefulSession.insert( "1" );
+        statefulSession.insert( new Integer(1) );
+        statefulSession.insert( new Long(1L) );
+        statefulSession.insert( new Short((short)1) );
+        statefulSession.insert( new Double(1.0) );
+        statefulSession.insert( new Float(1.0) );
+        statefulSession.insert( new Character('1') );
+        statefulSession.insert( Boolean.TRUE );
+        statefulSession.insert( String.class );
+        statefulSession.insert( new Date() );
+        statefulSession.fireAllRules();
     }
 }

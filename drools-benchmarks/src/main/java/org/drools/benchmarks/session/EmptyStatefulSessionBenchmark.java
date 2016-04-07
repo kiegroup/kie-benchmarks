@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-package org.drools.benchmarks;
+package org.drools.benchmarks.session;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.Warmup;
 
+@Warmup(iterations = 100)
 @Measurement(iterations = 100)
-public class EmptyStatelessSessionBenchmark extends AbstractSessionBenchmark {
+public class EmptyStatefulSessionBenchmark extends AbstractSessionBenchmark {
 
     @Setup(Level.Iteration)
     @Override
@@ -32,6 +34,6 @@ public class EmptyStatelessSessionBenchmark extends AbstractSessionBenchmark {
 
     @Benchmark
     public void testCreateEmptySession() {
-        createStatelessSession();
+        createStatefulSession();
     }
 }
