@@ -98,7 +98,6 @@ public class UpdatesOnJoinBenchmark extends AbstractSessionBenchmark {
             eFHs[i] = kieSession.insert( es[i] );
         }
 
-
         for (int i = 0; i < loopCount; i++) {
             for (int j = 0; j < factsNr; j++) {
                 as[j].setValue( as[j].getValue() + 1 );
