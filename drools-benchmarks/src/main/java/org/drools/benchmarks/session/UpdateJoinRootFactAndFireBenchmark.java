@@ -21,10 +21,7 @@ import org.drools.benchmarks.domain.B;
 import org.drools.benchmarks.domain.C;
 import org.drools.benchmarks.domain.D;
 import org.drools.benchmarks.domain.E;
-import org.drools.benchmarks.util.TestUtil;
-import org.kie.api.io.ResourceType;
-import org.kie.api.runtime.rule.FactHandle;
-import org.kie.internal.utils.KieHelper;
+import org.drools.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -66,8 +63,7 @@ public class UpdateJoinRootFactAndFireBenchmark extends AbstractSessionBenchmark
 
         String drl = sb.toString();
 
-        kieBase = new KieHelper().addContent( drl, ResourceType.DRL )
-                                 .build( TestUtil.getKieBaseConfiguration() );
+        createKieBaseFromString(drl);
 
         createKieSession();
     }
