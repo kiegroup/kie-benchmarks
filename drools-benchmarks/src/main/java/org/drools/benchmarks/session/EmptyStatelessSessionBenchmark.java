@@ -17,10 +17,6 @@
 package org.drools.benchmarks.session;
 
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Level;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.Warmup;
 
 public class EmptyStatelessSessionBenchmark extends AbstractEmptySessionBenchmark {
 
