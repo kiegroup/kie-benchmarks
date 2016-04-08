@@ -3,7 +3,6 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -14,7 +13,7 @@
  * limitations under the License.
  */
 
-package org.drools.benchmarks.session;
+package org.drools.benchmarks.common;
 
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
@@ -44,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 30)
 @Measurement(iterations = 20)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-public abstract class AbstractSessionBenchmark {
+public abstract class AbstractBenchmark {
 
     protected boolean holdSessionReferences = false;
     protected boolean reuseKieBase = false;
