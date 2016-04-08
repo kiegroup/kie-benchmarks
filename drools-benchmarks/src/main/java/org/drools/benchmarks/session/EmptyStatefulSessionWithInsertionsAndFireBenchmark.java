@@ -28,7 +28,7 @@ import java.util.Date;
 @Measurement(iterations = 100)
 public class EmptyStatefulSessionWithInsertionsAndFireBenchmark extends AbstractSessionBenchmark {
 
-    @Setup(Level.Iteration)
+    @Setup
     @Override
     public void setup() {
         createEmptyKieBase();
