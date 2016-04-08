@@ -22,11 +22,9 @@ import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.Warmup;
 
-import java.util.Date;
-
 @Warmup(iterations = 100)
 @Measurement(iterations = 100)
-public class EmptyStatefulSessionWithInsertionsAndFireBenchmark extends AbstractSessionBenchmark {
+public class EmptySessionBenchmark extends AbstractSessionBenchmark {
 
     @Setup
     @Override
@@ -37,16 +35,5 @@ public class EmptyStatefulSessionWithInsertionsAndFireBenchmark extends Abstract
     @Benchmark
     public void testCreateEmptySession() {
         createKieSession();
-        kieSession.insert( "1" );
-        kieSession.insert( new Integer(1) );
-        kieSession.insert( new Long(1L) );
-        kieSession.insert( new Short((short)1) );
-        kieSession.insert( new Double(1.0) );
-        kieSession.insert( new Float(1.0) );
-        kieSession.insert( new Character('1') );
-        kieSession.insert( Boolean.TRUE );
-        kieSession.insert( String.class );
-        kieSession.insert( new Date() );
-        kieSession.fireAllRules();
     }
 }

@@ -18,7 +18,7 @@ package org.drools.benchmarks.session;
 
 import org.drools.benchmarks.domain.A;
 import org.drools.benchmarks.domain.B;
-import org.kie.api.runtime.rule.FactHandle;
+import org.drools.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -66,7 +66,7 @@ public class RuleUnlikingBenchmark extends AbstractSessionBenchmark {
         kieSession.fireAllRules();
 
         for (int i = 0; i < loopCount; i++) {
-            kieSession.delete( aFH );
+            kieSession.retract( aFH );
             kieSession.fireAllRules();
             kieSession.insert( new A( rulesNr + 1 ) );
             kieSession.fireAllRules();

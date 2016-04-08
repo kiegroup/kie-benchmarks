@@ -18,7 +18,7 @@ package org.drools.benchmarks.session;
 
 import org.drools.benchmarks.domain.A;
 import org.drools.benchmarks.domain.B;
-import org.kie.api.runtime.rule.FactHandle;
+import org.drools.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
