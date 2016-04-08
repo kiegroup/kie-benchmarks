@@ -3,7 +3,6 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -16,23 +15,15 @@
 
 package org.drools.benchmarks.session;
 
+import java.util.Date;
+
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.Warmup;
 
-import java.util.Date;
-
-@Warmup(iterations = 100)
-@Measurement(iterations = 100)
-public class EmptySessionWithInsertionsAndFireBenchmark extends AbstractSessionBenchmark {
-
-    @Setup
-    @Override
-    public void setup() {
-        createEmptyKieBase();
-    }
+public class EmptySessionWithInsertionsAndFireBenchmark extends AbstractEmptySessionBenchmark {
 
     @Benchmark
     public void testCreateEmptySession() {
