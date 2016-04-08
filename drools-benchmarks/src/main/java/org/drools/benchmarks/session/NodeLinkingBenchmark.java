@@ -18,7 +18,7 @@ package org.drools.benchmarks.session;
 
 import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.domain.B;
-import org.kie.api.runtime.rule.FactHandle;
+import org.drools.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -64,7 +64,7 @@ public class NodeLinkingBenchmark extends AbstractBenchmark {
         for (int i = 0; i < loopCount; i++) {
             FactHandle bFH = kieSession.insert( new B( 1 ) );
             kieSession.fireAllRules();
-            kieSession.delete( bFH );
+            kieSession.retract( bFH );
             kieSession.fireAllRules();
         }
     }

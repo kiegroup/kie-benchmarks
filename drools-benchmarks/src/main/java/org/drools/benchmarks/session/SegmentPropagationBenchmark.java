@@ -22,7 +22,7 @@ import org.drools.benchmarks.domain.B;
 import org.drools.benchmarks.domain.C;
 import org.drools.benchmarks.domain.D;
 import org.drools.benchmarks.domain.E;
-import org.kie.api.runtime.rule.FactHandle;
+import org.drools.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -88,7 +88,7 @@ public class SegmentPropagationBenchmark extends AbstractBenchmark {
     @Benchmark
     public void test() {
         for (int i = 0; i < loopCount; i++) {
-            kieSession.delete( aFH );
+            kieSession.retract( aFH );
             kieSession.fireAllRules();
             kieSession.insert( new A( treesNr + 1 ) );
             kieSession.fireAllRules();
