@@ -35,7 +35,7 @@ public class BasicOperatorsBenchmark extends AbstractBenchmark {
     @Param({"1", "6", "10"})
     private int factsNr;
 
-    private Set<Account> accounts = new HashSet<Account>();
+    private Set<Account> accounts;
 
     @Setup
     public void setupKieBase() {
@@ -76,7 +76,7 @@ public class BasicOperatorsBenchmark extends AbstractBenchmark {
     }
 
     private void generateFacts() {
-        accounts = new HashSet<>();
+        accounts = new HashSet<Account>();
         for (int i = 1; i <= factsNr; i++) {
             final Account account = new Account();
             account.setBalance(i * 10000);
