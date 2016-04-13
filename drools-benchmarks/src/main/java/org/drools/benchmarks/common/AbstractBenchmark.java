@@ -52,6 +52,8 @@ public abstract class AbstractBenchmark {
     protected StatefulKnowledgeSession kieSession;
     protected StatelessKnowledgeSession statelessSession;
 
+    protected boolean isSmokeTestsRun = TestUtil.isSmokeTestsRun();
+
     public abstract void setup();
 
     @TearDown(Level.Iteration)
