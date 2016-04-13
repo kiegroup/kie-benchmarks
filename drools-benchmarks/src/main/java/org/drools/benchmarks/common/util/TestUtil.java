@@ -13,13 +13,15 @@
  * limitations under the License.
  */
 
+
 package org.drools.benchmarks.common.util;
 
-public final class Constants {
+public final class TestUtil {
 
-    public static final String PROP_KEY_SMOKE_TESTS = "smoke.tests";
+    public static boolean isSmokeTestsRun() {
+        return Boolean.TRUE.toString().equals(System.getProperty(Constants.PROP_KEY_SMOKE_TESTS));
+    }
 
-    private Constants() {
-        // Intentionally private - it should be not possible to instantiate util classes.
+    private TestUtil() {
     }
 }
