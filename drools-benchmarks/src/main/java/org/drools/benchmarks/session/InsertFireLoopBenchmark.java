@@ -17,6 +17,8 @@
 package org.drools.benchmarks.session;
 
 import org.drools.benchmarks.common.AbstractBenchmark;
+import org.drools.benchmarks.common.DrlProvider;
+import org.drools.benchmarks.common.providers.RulesWithJoins;
 import org.drools.benchmarks.domain.A;
 import org.drools.benchmarks.domain.B;
 import org.drools.benchmarks.domain.C;
@@ -57,43 +59,8 @@ public class InsertFireLoopBenchmark extends AbstractBenchmark {
 
     @Setup
     public void setupKieBase() {
-        StringBuilder sb = new StringBuilder();
-        sb.append( "import org.drools.benchmarks.domain.*;\n" );
-        if (cep) {
-            sb.append( "declare A @role( event ) @timestamp( value ) end\n" +
-                       "declare B @role( event ) @timestamp( value ) end\n" );
-            if (joinsNr > 1) {
-                sb.append( "declare C @role( event ) @timestamp( value ) end\n" );
-            }
-            if (joinsNr > 2) {
-                sb.append( "declare D @role( event ) @timestamp( value ) end\n" );
-            }
-        }
-        for ( int i = 0; i < rulesNr; i++ ) {
-            sb.append( "rule R" + i + " when\n");
-            if (cep) {
-                sb.append( "  $a : A( value > " + i + ")\n" +
-                           "  $b : B( this after $a )\n" );
-                if (joinsNr > 1) {
-                    sb.append( "  $c : C( this after $b )\n" );
-                }
-                if (joinsNr > 2) {
-                    sb.append( "  $d : D( this after $c )\n" );
-                }
-            } else {
-                sb.append( "  A( $a : value > " + i + ")\n" +
-                           "  B( $b : value > $a)\n" );
-                if (joinsNr > 1) {
-                    sb.append( "  C( $c : value > $b )\n" );
-                }
-                if (joinsNr > 2) {
-                    sb.append( "  D( $d : value > $c )\n" );
-                }
-            }
-            sb.append( "then end\n" );
-        }
-
-        createKieBaseFromDrl( sb.toString(),
+        final DrlProvider drlProvider = new RulesWithJoins(joinsNr, cep, true);
+        createKieBaseFromDrl( drlProvider.getDrl(rulesNr),
                               multithread ? MultithreadEvaluationOption.YES : MultithreadEvaluationOption.NO,
                               cep ? EventProcessingOption.STREAM : EventProcessingOption.CLOUD );
     }
