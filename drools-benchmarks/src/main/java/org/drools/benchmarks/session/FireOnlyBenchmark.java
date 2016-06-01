@@ -31,10 +31,7 @@ import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
 
-/**
- * Inserts facts and fires at each insertion causing the activation of all rules.
- */
-public class InsertFireLoopBenchmark extends AbstractBenchmark {
+public class FireOnlyBenchmark extends AbstractBenchmark {
 
     @Param({"12", "48", "192", "768"})
     private int rulesNr;
@@ -54,12 +51,9 @@ public class InsertFireLoopBenchmark extends AbstractBenchmark {
     @Param({"1", "2", "3"})
     private int joinsNr;
 
-    @Param({"true", "false"})
-    private boolean batchFire;
-
     @Setup
     public void setupKieBase() {
-        final DrlProvider drlProvider = new RulesWithJoins(joinsNr, cep, true);
+        final DrlProvider drlProvider = new RulesWithJoins( joinsNr, cep, true);
         createKieBaseFromDrl( drlProvider.getDrl(rulesNr),
                               multithread ? MultithreadEvaluationOption.YES : MultithreadEvaluationOption.NO,
                               cep ? EventProcessingOption.STREAM : EventProcessingOption.CLOUD );
@@ -69,10 +63,6 @@ public class InsertFireLoopBenchmark extends AbstractBenchmark {
     @Override
     public void setup() {
         createKieSession();
-    }
-
-    @Benchmark
-    public void test() {
         StatefulKnowledgeSessionImpl session = (StatefulKnowledgeSessionImpl) kieSession;
         A a = new A( rulesNr + 1 );
         if (async) {
@@ -87,7 +77,7 @@ public class InsertFireLoopBenchmark extends AbstractBenchmark {
                     session.insertAsync( new C( rulesNr + factsNr + i + 3 ) );
                 }
                 if (joinsNr > 2) {
-                    session.insertAsync( new D( rulesNr + factsNr*2 + i + 3 ) );
+                    session.insertAsync( new D( rulesNr + factsNr * 2 + i + 3 ) );
                 }
             } else {
                 session.insert( new B( rulesNr + i + 3 ) );
@@ -98,12 +88,11 @@ public class InsertFireLoopBenchmark extends AbstractBenchmark {
                     session.insert( new D( rulesNr + factsNr*2 + i + 3 ) );
                 }
             }
-            if (!batchFire) {
-                kieSession.fireAllRules();
-            }
         }
-        if (batchFire) {
-            kieSession.fireAllRules();
-        }
+    }
+
+    @Benchmark
+    public void test() {
+        kieSession.fireAllRules();
     }
 }
