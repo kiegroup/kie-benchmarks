@@ -26,6 +26,8 @@ public class RulesWithJoins implements DrlProvider {
     private final int numberOfJoins;
     private final boolean withCep;
     private final boolean appendDrlHeader;
+    private final String global;
+    private final String consequence;
 
     /**
      * Constructor.
@@ -36,6 +38,10 @@ public class RulesWithJoins implements DrlProvider {
      * @param appendDrlHeader True, if DRL header should be appended to provided DRL, else false.
      */
     public RulesWithJoins(final int numberOfJoins, final boolean withCep, final boolean appendDrlHeader) {
+        this(numberOfJoins, withCep, appendDrlHeader, "", "");
+    }
+
+    public RulesWithJoins(final int numberOfJoins, final boolean withCep, final boolean appendDrlHeader, String global, String consequence) {
         if (numberOfJoins > 4) {
             throw new IllegalArgumentException(
                     "Unsupported number of joins! Maximal allowed number of joins is 4, actual is " + numberOfJoins);
@@ -43,6 +49,8 @@ public class RulesWithJoins implements DrlProvider {
         this.numberOfJoins = numberOfJoins;
         this.withCep = withCep;
         this.appendDrlHeader = appendDrlHeader;
+        this.global = global;
+        this.consequence = consequence;
     }
 
     @Override
@@ -57,13 +65,16 @@ public class RulesWithJoins implements DrlProvider {
         if (appendDrlHeader) {
             drlBuilder.append("import " + A.class.getPackage().getName() + ".*;\n");
         }
+        drlBuilder.append( global + "\n" );
         if (withCep) {
             appendCepHeader(drlBuilder);
         }
         for ( int i = 0; i < numberOfRules; i++ ) {
             drlBuilder.append( "rule R" + i + " when\n");
             appendJoins(drlBuilder, i);
-            drlBuilder.append( "then end\n" );
+            drlBuilder.append( "then\n" );
+            drlBuilder.append( consequence + "\n" );
+            drlBuilder.append( "end\n" );
         }
         return drlBuilder.toString();
     }
