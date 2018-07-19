@@ -17,6 +17,7 @@
 package org.drools.benchmarks.throughput;
 
 import java.util.concurrent.atomic.LongAdder;
+
 import org.drools.benchmarks.common.DrlProvider;
 import org.drools.benchmarks.domain.A;
 import org.drools.benchmarks.domain.AbstractBean;
@@ -24,11 +25,8 @@ import org.drools.benchmarks.domain.B;
 import org.drools.benchmarks.domain.C;
 import org.drools.benchmarks.domain.D;
 import org.drools.benchmarks.domain.E;
-import org.drools.core.impl.InternalKnowledgeBase;
-import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.runtime.conf.ClockTypeOption;
-import org.kie.internal.conf.MultithreadEvaluationOption;
 import org.openjdk.jmh.annotations.AuxCounters;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -48,9 +46,6 @@ public abstract class AbstractEventTriggersAgendaThroughputBenchmark extends Abs
 
     @Param({"true"})
     protected boolean pseudoClock = true;
-
-    @Param({"true", "false"})
-    protected boolean multithread = true;
 
     @Param({"8"})
     protected int numberOfRules = 8;
@@ -86,12 +81,7 @@ public abstract class AbstractEventTriggersAgendaThroughputBenchmark extends Abs
 
         createKieBaseFromDrl(
                 drl,
-                EventProcessingOption.STREAM,
-                multithread ? MultithreadEvaluationOption.YES : MultithreadEvaluationOption.NO);
-
-        if (((InternalKnowledgeBase) kieBase).getConfiguration().isMultithreadEvaluation() != multithread) {
-            throw new IllegalStateException();
-        }
+                EventProcessingOption.STREAM);
     }
 
     @Setup(Level.Iteration)

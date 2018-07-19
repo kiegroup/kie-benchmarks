@@ -25,7 +25,6 @@ import org.drools.benchmarks.domain.C;
 import org.drools.benchmarks.domain.D;
 import org.drools.core.impl.StatefulKnowledgeSessionImpl;
 import org.kie.api.conf.EventProcessingOption;
-import org.kie.internal.conf.MultithreadEvaluationOption;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
@@ -41,9 +40,6 @@ public class InsertOnlyBenchmark extends AbstractBenchmark {
     private int factsNr;
 
     @Param({"true", "false"})
-    private boolean multithread;
-
-    @Param({"true", "false"})
     private boolean cep;
 
     @Param({"1", "2", "3"})
@@ -53,7 +49,6 @@ public class InsertOnlyBenchmark extends AbstractBenchmark {
     public void setupKieBase() {
         final DrlProvider drlProvider = new RulesWithJoinsProvider( joinsNr, cep, true);
         createKieBaseFromDrl( drlProvider.getDrl(rulesNr),
-                multithread ? MultithreadEvaluationOption.YES : MultithreadEvaluationOption.NO,
                 cep ? EventProcessingOption.STREAM : EventProcessingOption.CLOUD );
     }
 
