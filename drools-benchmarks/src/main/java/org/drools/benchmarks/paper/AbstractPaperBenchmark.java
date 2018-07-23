@@ -17,7 +17,9 @@
 package org.drools.benchmarks.paper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.drools.benchmarks.common.AbstractBenchmark;
 import org.drools.benchmarks.common.providers.RulesWithSegmentsProvider;
@@ -96,7 +98,13 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         // reset these, as tests change them.
         a.setId(0);
         a.setOtherValue(0);
-        beanList.get(beanList.size()-1).setId(0);
+
+        // beanList.get(beanList.size()-1).setId(0);
+        for ( AbstractBean bean : lastBeanList ) {
+            bean.setId(0);
+        }
+
+        Collections.shuffle(beanList, new Random(0L));
 
         createKieSession();
     }
