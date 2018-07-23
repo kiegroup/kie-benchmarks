@@ -48,9 +48,9 @@ import org.slf4j.LoggerFactory;
 
 //@Warmup(iterations = 15000)
 //@Measurement(iterations = 5000)
-@Warmup(iterations = 0)
-@Measurement(iterations = 1)
-@Fork(0)
+@Warmup(iterations = 3)
+@Measurement(iterations = 3)
+@Fork(2)
 public class AbstractPaperBenchmark extends AbstractBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
     protected RulesWithSegmentsProvider drlProvider;
@@ -107,7 +107,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         for (AbstractBean bean : beanList) {
             kieSession.insert(bean);
         }
-        
+
         kieSession.getAgenda().getAgendaGroup("Group" + agendaGroup).setFocus();
 
         int fired = kieSession.fireAllRules();
