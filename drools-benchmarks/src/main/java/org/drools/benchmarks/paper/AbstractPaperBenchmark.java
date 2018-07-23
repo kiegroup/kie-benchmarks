@@ -49,9 +49,9 @@ import org.slf4j.LoggerFactory;
 
 //@Warmup(iterations = 15000)
 //@Measurement(iterations = 5000)
-@Warmup(iterations = 3)
-@Measurement(iterations = 3)
-@Fork(2)
+@Warmup(iterations = 1)
+@Measurement(iterations = 1)
+@Fork(0)
 public class AbstractPaperBenchmark extends AbstractBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
     protected RulesWithSegmentsProvider drlProvider;
@@ -72,10 +72,11 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         String suffixDrl = "";
 
         drlProvider = new RulesWithSegmentsProvider( suffixDrl, firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
-                                                     true, constrainToPatternA);
+                                                     lastRuleSalience, true, constrainToPatternA);
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
         System.out.println(rules);
+
         if (engineOption != null) {
             createKieBaseFromDrl( rules, RuleEngineOption.determineOption( engineOption ) );
         } else {
@@ -95,13 +96,15 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
     public void setup() {
         System.out.println("\n");
 
+        System.out.println("setup ksession run()");
+
         // reset these, as tests change them.
         a.setId(0);
         a.setOtherValue(0);
 
-        // beanList.get(beanList.size()-1).setId(0);
+        int id = 0;
         for ( AbstractBean bean : lastBeanList ) {
-            bean.setId(0);
+            bean.setId(id++);
         }
 
         Collections.shuffle(beanList, new Random(0L));
@@ -111,6 +114,8 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
 
     public void test() {
         System.out.println("\n");
+
+        System.out.println("test run()");
 
         FactHandle fhA = kieSession.insert(a);
         for (AbstractBean bean : beanList) {

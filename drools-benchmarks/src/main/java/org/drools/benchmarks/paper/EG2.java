@@ -17,49 +17,168 @@
 package org.drools.benchmarks.paper;
 
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class EG2 extends AbstractPaperBenchmark {
+public class EG2  extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-//    @Param({"phreak", "reteoo"})
-    private String engineOption;
+    @Param({"phreak", "reteoo"})
+    protected String engineOption;
 
-    @Param({"1", "3"})
-    private int nbrAgendaGroups = 3;
+    @Warmup(iterations = 10)
+    @Measurement(iterations = 10)
+    public static class EG2_2 extends EG2 {
+        @Param({"1"})
+        protected int nbrAgendaGroups;
 
-    @Param({"1, 3|2, 2", "1, 3, 3|2, 2, 2", "1, 3, 3, 3|2, 2, 2, 2"})
-    private String segments;
+        @Param({"1, 2, 2|2, 2, 2"})
+        protected String segments;
 
-    @Param({"1", "4", "8"})
-    private int nbrObjectsPerType = 4;
+        @Param({"1", "4", "8", "16"})
+        protected int nbrObjectsPerType;
 
-    @Param({"300"})
-    private int exitValue = 300;
+        @Param({"300"})
+        protected int exitValue;
 
+        @Setup
+        public void setupKieBase() {
+            super.setupKieBase(segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
 
-    @Setup
-    public void setupKieBase() {
-        String consequence = "    modify(a){setOtherValue(a.getOtherValue()+1)};";
-        String firstConsequence = consequence;
-        String lastConsequence = consequence;
-        String lastOfGroupConsequence = consequence;
+        @Benchmark
+        public void test() {
+            super.test();
+        }
+    }
+
+    @Warmup(iterations = 10)
+    @Measurement(iterations = 10)
+    public static class EG2_3 extends EG2 {
+        @Param({"1", "2", "4"})
+        protected int nbrAgendaGroups;
+
+        @Param({"1, 2, 2, 2|2, 2, 2, 2"})
+        protected String segments;
+
+        @Param({"1", "4", "8", "16"})
+        protected int nbrObjectsPerType;
+
+        @Param({"300"})
+        private int exitValue;
+
+        @Setup
+        public void setupKieBase() {
+            super.setupKieBase(segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
+
+        @Benchmark
+        public void test() {
+            super.test();
+        }
+    }
+
+    @Warmup(iterations = 10)
+    @Measurement(iterations = 10)
+    public static class EG2_4 extends EG2 {
+        @Param({"1", "3"})
+        protected int nbrAgendaGroups;
+
+        @Param({"1, 3, 3|2, 2, 2"})
+        protected String segments;
+
+        @Param({"1", "4", "8", "16"})
+        protected int nbrObjectsPerType;
+
+        @Param({"300"})
+        protected int exitValue;
+
+        @Setup
+        public void setupKieBase() {
+            super.setupKieBase(segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
+
+        @Benchmark
+        public void test() {
+            super.test();
+        }
+    }
+
+    @Warmup(iterations = 5)
+    @Measurement(iterations = 5)
+    public static class EG2_5 extends EG2 {
+        @Param({"1", "3"})
+        protected int nbrAgendaGroups;
+
+        @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+        protected String segments;
+
+        @Param({"1", "4", "8", "16"})
+        protected int nbrObjectsPerType;
+
+        @Param({"300"})
+        protected int exitValue;
+
+        @Setup
+        public void setupKieBase() {
+            super.setupKieBase(segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
+
+        @Benchmark
+        public void test() {
+            super.test();
+        }
+    }
+
+    @Warmup(iterations = 3)
+    @Measurement(iterations = 5)
+    public static class EG2_6 extends EG2 {
+        @Param({"1", "3"})
+        protected int nbrAgendaGroups;
+
+        @Param({"1, 3, 3, 3|3, 3, 3, 3"})
+        protected String segments;
+
+        @Param({"1", "4", "8", "16"})
+        protected int nbrObjectsPerType;
+
+        @Param({"300"})
+        protected int exitValue;
+
+        @Setup
+        public void setupKieBase() {
+            super.setupKieBase(segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
+
+        @Benchmark
+        public void test() {
+            super.test();
+        }
+    }
+
+    public void setupKieBase(String segments, int nbrAgendaGroups, int nbrObjectsPerType, int exitValue, String engineOption ) {
+        String firstConsequence = ""; //"
+        String lastConsequence = ""; //"
+        String lastOfGroupConsequence = ""; //"
+
+        String consequence = "    modify(a){setOtherValue(a.getOtherValue()+1)};\n";
+        consequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
+        firstConsequence = consequence;
+        lastConsequence = consequence;
+        lastOfGroupConsequence = consequence;
 
         int[] segmentsPerLevel = EG1.getSegmentsPerLevel(segments);
         int[] nodesPerSegment = EG1.getNodesPerSegment(segments);
 
-        super.setupKieBase(firstConsequence, consequence, lastConsequence, consequence,
+        super.setupKieBase(firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                            false,
                            segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType , 100, false, nbrAgendaGroups-1, exitValue, engineOption);
     }
 
-    @Benchmark
-    public void test() {
-        super.test();
-    }
 
 }

@@ -39,7 +39,7 @@ public class RulesWithSegmentsProvider implements DrlProvider {
     private int lastPatternCounter = 0;
 
     public RulesWithSegmentsProvider(final String global, final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
-                                     boolean appendDrlHeader, boolean constrainlastPatternToA) {
+                                     int lastRuleSalience, boolean appendDrlHeader, boolean constrainlastPatternToA) {
         this.global = global;
         this.firstConsequence = firstConsequence;
         this.consequence = consequence;
@@ -47,6 +47,7 @@ public class RulesWithSegmentsProvider implements DrlProvider {
         this.lastOfGroupConsequence = lastOfGroupConsequence;
         this.appendDrlHeader = appendDrlHeader;
         this.constrainlastPatternToA = constrainlastPatternToA;
+        this.lastRuleSalience = lastRuleSalience;
     }
 
     @Override
