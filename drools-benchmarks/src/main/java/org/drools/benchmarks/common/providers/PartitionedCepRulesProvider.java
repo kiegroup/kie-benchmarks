@@ -81,6 +81,10 @@ public class PartitionedCepRulesProvider implements DrlProvider {
         return drlBuilder.toString();
     }
 
+    public String getDrl(int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups) {
+        throw new UnsupportedOperationException();
+    }
+
     public void addJoins(final StringBuilder drlBuilder, final int partitionNumber) {
         char previousClassName = 'A';
         drlBuilder.append(getFactBinding(previousClassName) + previousClassName + "( " + constraintBuilder.apply( partitionNumber ) + "," +

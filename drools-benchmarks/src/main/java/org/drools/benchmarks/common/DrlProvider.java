@@ -32,4 +32,6 @@ public interface DrlProvider {
      * @return String representation of DRL that contains specified number of rules.
      */
     String getDrl(int numberOfRules);
+
+    String getDrl(int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups);
 }

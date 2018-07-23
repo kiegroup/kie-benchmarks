@@ -68,6 +68,10 @@ public class CepRulesProvider implements DrlProvider {
         return drlBuilder.toString();
     }
 
+    public String getDrl(int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups) {
+        throw new UnsupportedOperationException();
+    }
+
     private String getTemporalDistanceString() {
         if (!"".equals(temporalDistanceStart)) {
             if (!"".equals(temporalDistanceEnd)) {

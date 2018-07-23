@@ -18,9 +18,10 @@ package org.drools.benchmarks.domain;
 import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class AbstractBean {
+
     private static final AtomicLong idGenerator = new AtomicLong( 0 );
 
-    private final long id;
+    private long id;
     private int value;
 
     protected AbstractBean() {
@@ -45,6 +46,10 @@ public abstract class AbstractBean {
     @Override
     public boolean equals( Object obj ) {
         return this.getClass() == obj.getClass() && id == ((AbstractBean)obj).id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getId() {

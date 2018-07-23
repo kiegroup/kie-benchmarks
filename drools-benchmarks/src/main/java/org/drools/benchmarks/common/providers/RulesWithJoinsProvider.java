@@ -75,6 +75,10 @@ public class RulesWithJoinsProvider implements DrlProvider {
         return getDrl(1);
     }
 
+    public String getDrl(int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups) {
+        throw new UnsupportedOperationException();
+    }
+
     @Override
     public String getDrl(int numberOfRules) {
         final StringBuilder drlBuilder = new StringBuilder();

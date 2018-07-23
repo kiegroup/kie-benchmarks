@@ -81,6 +81,10 @@ public class RulesWithJoinsTreeProvider implements DrlProvider {
         return drlBuilder.toString();
     }
 
+    public String getDrl(int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups) {
+        throw new UnsupportedOperationException();
+    }
+
     private void appendJoins(final StringBuilder drlBuilder, final int ruleNumber) {
         final ConstraintPattern[] joinConstraints = getJoinConstraints();
         String variableNameForJoinConstraint = "$a";
