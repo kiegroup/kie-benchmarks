@@ -36,11 +36,8 @@ public class EG3 extends AbstractPaperBenchmark {
     @Param({"1", "3"})
     private int nbrAgendaGroups = 1;
 
-    @Param({"1, 3, 3, 3"})
-    private String segmentsPerLevelStr = "1, 3, 3, 3";
-
-    @Param({"2, 2, 2, 2"})
-    private String nodesPerSegmentStr = "2, 2, 2, 2";
+    @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+    private String segments;
 
     @Param({"4"})
     private int nbrObjectsPerType = 4;
@@ -53,18 +50,18 @@ public class EG3 extends AbstractPaperBenchmark {
     public void setupKieBase() {
         String consequence = "    modify(a){setId(a.getId()+1), setOtherValue(a.getOtherValue()+1)};\n";
         consequence       += "    modify(last){setId(last.getId()+1)};\n";
-        consequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
+        //consequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
         String firstConsequence = consequence;
 
         String lastConsequence = "    modify(a){setId(0), setOtherValue(a.getOtherValue()+1)};\n";;
         lastConsequence       += "    modify(last){setId(0)};\n";
-        lastConsequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
+        //lastConsequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
 
         String lastOfGroupConsequence = consequence;
         lastOfGroupConsequence       += "    " + EG3.class.getName() + ".nextAgendaGroup(kcontext);\n";
 
-        int[] segmentsPerLevel = EG1.getSegmentsPerLevel(segmentsPerLevelStr);
-        int[] nodesPerSegment = EG1.getNodesPerSegment(nodesPerSegmentStr);
+        int[] segmentsPerLevel = EG1.getSegmentsPerLevel(segments);
+        int[] nodesPerSegment = EG1.getNodesPerSegment(segments);
 
         super.setupKieBase(firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                            false,

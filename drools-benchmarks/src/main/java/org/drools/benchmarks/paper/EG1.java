@@ -54,11 +54,8 @@ public class EG1 extends AbstractPaperBenchmark {
     @Param({"1", "3"})
     private int nbrAgendaGroups = 3;
 
-    @Param({"1, 3, 3, 3"})
-    private String segmentsPerLevelStr = "1, 3, 3, 3";
-
-    @Param({"2, 2, 2, 2"})
-    private String nodesPerSegmentStr = "2, 2, 2, 2";
+    @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+    private String segments;
 
     @Param({"4"})
     private int nbrObjectsPerType = 4;
@@ -78,8 +75,8 @@ public class EG1 extends AbstractPaperBenchmark {
         lastConsequence = consequence;
         lastOfGroupConsequence = consequence;
 
-        int[] segmentsPerLevel = getSegmentsPerLevel(segmentsPerLevelStr);
-        int[] nodesPerSegment = getNodesPerSegment(nodesPerSegmentStr);
+        int[] segmentsPerLevel = getSegmentsPerLevel(segments);
+        int[] nodesPerSegment = getNodesPerSegment(segments);
 
         super.setupKieBase(firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                            false,
@@ -87,8 +84,9 @@ public class EG1 extends AbstractPaperBenchmark {
     }
 
     public static int[] getNodesPerSegment(String nodesPerSegmentStr) {
-        String[] segs;
-        segs = nodesPerSegmentStr.split(",");
+        int split = nodesPerSegmentStr.indexOf('|');
+
+        String[] segs = nodesPerSegmentStr.substring(split+1).split(",");
         int[] nodesPerSegment = new int[segs.length];
         for (int i = 0; i < segs.length; i++) {
             nodesPerSegment[i] = Integer.valueOf(segs[i].trim());
@@ -97,7 +95,9 @@ public class EG1 extends AbstractPaperBenchmark {
     }
 
     public static int[] getSegmentsPerLevel(String segmentsPerLevelStr) {
-        String[] segs = segmentsPerLevelStr.split(",");
+        int split = segmentsPerLevelStr.indexOf('|');
+
+        String[] segs = segmentsPerLevelStr.substring(0, split).split(",");
         int[] segmentsPerLevel = new int[segs.length];
         for (int i = 0; i < segs.length; i++) {
             segmentsPerLevel[i] = Integer.valueOf(segs[i].trim());

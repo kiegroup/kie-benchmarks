@@ -33,11 +33,8 @@ public class EG2 extends AbstractPaperBenchmark {
     @Param({"1", "3"})
     private int nbrAgendaGroups = 3;
 
-    @Param({"1, 3, 3, 3"})
-    private String segmentsPerLevelStr = "1, 3, 3, 3";
-
-    @Param({"2, 2, 2, 2"})
-    private String nodesPerSegmentStr = "2, 2, 2, 2";
+    @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+    private String segments;
 
     @Param({"4"})
     private int nbrObjectsPerType = 4;
@@ -53,8 +50,8 @@ public class EG2 extends AbstractPaperBenchmark {
         String lastConsequence = consequence;
         String lastOfGroupConsequence = consequence;
 
-        int[] segmentsPerLevel = EG1.getSegmentsPerLevel(segmentsPerLevelStr);
-        int[] nodesPerSegment = EG1.getNodesPerSegment(nodesPerSegmentStr);
+        int[] segmentsPerLevel = EG1.getSegmentsPerLevel(segments);
+        int[] nodesPerSegment = EG1.getNodesPerSegment(segments);
 
         super.setupKieBase(firstConsequence, consequence, lastConsequence, consequence,
                            false,
