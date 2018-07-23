@@ -36,6 +36,7 @@ import org.drools.benchmarks.domain.J;
 import org.drools.benchmarks.domain.K;
 import org.drools.benchmarks.domain.L;
 import org.kie.api.runtime.rule.FactHandle;
+import org.kie.internal.builder.conf.RuleEngineOption;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
@@ -65,7 +66,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
     public void setupKieBase(final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
                              boolean constrainToPatternA,
                              int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups, int nbrObjectsPerType,int lastRuleSalience, boolean singleLastBean,
-                             int agendaGroup, int exitValue) {
+                             int agendaGroup, int exitValue, String engineOption) {
         String suffixDrl = "";
 
         drlProvider = new RulesWithSegmentsProvider( suffixDrl, firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
@@ -73,7 +74,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
         System.out.println(rules);
-        createKieBaseFromDrl(rules);
+        createKieBaseFromDrl(rules, RuleEngineOption.determineOption( engineOption ));
 
         System.out.println("\n");
         createData(nbrObjectsPerType, singleLastBean);

@@ -16,40 +16,18 @@
 
 package org.drools.benchmarks.paper;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.drools.benchmarks.common.AbstractBenchmark;
-import org.drools.benchmarks.common.providers.RulesWithSegmentsProvider;
-import org.drools.benchmarks.domain.A;
-import org.drools.benchmarks.domain.AbstractBean;
-import org.drools.benchmarks.domain.B;
-import org.drools.benchmarks.domain.C;
-import org.drools.benchmarks.domain.D;
-import org.drools.benchmarks.domain.E;
-import org.drools.benchmarks.domain.F;
-import org.drools.benchmarks.domain.G;
-import org.drools.benchmarks.domain.H;
-import org.drools.benchmarks.domain.I;
-import org.drools.benchmarks.domain.J;
-import org.drools.benchmarks.domain.K;
-import org.drools.benchmarks.domain.L;
-import org.drools.benchmarks.domain.BeanType;
-import org.kie.api.runtime.rule.FactHandle;
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Level;
-import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.Blackhole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 public class EG1 extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Param({"phreak", "reteoo"})
+    private String engineOption;
 
     @Param({"1", "3"})
     private int nbrAgendaGroups = 3;
@@ -80,7 +58,7 @@ public class EG1 extends AbstractPaperBenchmark {
 
         super.setupKieBase(firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                            false,
-                           segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType, 0, false, 0, exitValue);
+                           segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType, 0, false, 0, exitValue, engineOption);
     }
 
     public static int[] getNodesPerSegment(String nodesPerSegmentStr) {

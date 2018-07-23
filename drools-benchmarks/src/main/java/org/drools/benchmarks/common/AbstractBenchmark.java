@@ -127,12 +127,12 @@ public abstract class AbstractBenchmark {
     }
 
     private KieBaseConfiguration getKieBaseConfiguration() {
+        return getKieBaseConfiguration(TestUtil.useReteoo() ? RuleEngineOption.RETEOO : RuleEngineOption.PHREAK);
+    }
+
+    private KieBaseConfiguration getKieBaseConfiguration(RuleEngineOption engineOption) {
         final KieBaseConfiguration kieBaseConfiguration = KnowledgeBaseFactory.newKnowledgeBaseConfiguration();
-        if (TestUtil.useReteoo()) {
-            kieBaseConfiguration.setOption(RuleEngineOption.RETEOO);
-        } else {
-            kieBaseConfiguration.setOption(RuleEngineOption.PHREAK);
-        }
+        kieBaseConfiguration.setOption(engineOption);
         return kieBaseConfiguration;
     }
 

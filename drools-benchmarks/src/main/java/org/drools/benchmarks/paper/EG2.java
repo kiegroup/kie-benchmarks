@@ -17,18 +17,17 @@
 package org.drools.benchmarks.paper;
 
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.Warmup;
-import org.openjdk.jmh.infra.Blackhole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 public class EG2 extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Param({"phreak", "reteoo"})
+    private String engineOption;
 
     @Param({"1", "3"})
     private int nbrAgendaGroups = 3;
@@ -55,7 +54,7 @@ public class EG2 extends AbstractPaperBenchmark {
 
         super.setupKieBase(firstConsequence, consequence, lastConsequence, consequence,
                            false,
-                           segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType , 100, false, nbrAgendaGroups-1, exitValue);
+                           segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType , 100, false, nbrAgendaGroups-1, exitValue, engineOption);
     }
 
     @Benchmark
