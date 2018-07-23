@@ -47,9 +47,7 @@ import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Warmup(iterations = 1)
-@Measurement(iterations = 1)
-@Fork(0)
+@Fork(2)
 public class AbstractPaperBenchmark extends AbstractBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
     protected RulesWithSegmentsProvider drlProvider;
