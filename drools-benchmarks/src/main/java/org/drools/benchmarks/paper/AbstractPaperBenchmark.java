@@ -74,7 +74,11 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
         System.out.println(rules);
-        createKieBaseFromDrl(rules, RuleEngineOption.determineOption( engineOption ));
+        if (engineOption != null) {
+            createKieBaseFromDrl( rules, RuleEngineOption.determineOption( engineOption ) );
+        } else {
+            createKieBaseFromDrl( rules );
+        }
 
         System.out.println("\n");
         createData(nbrObjectsPerType, singleLastBean);
