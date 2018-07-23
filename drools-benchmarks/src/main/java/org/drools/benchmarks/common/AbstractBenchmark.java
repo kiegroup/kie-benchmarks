@@ -98,6 +98,7 @@ public abstract class AbstractBenchmark {
         if (TestUtil.dumpDrl()) {
             logDebug("Benchmark DRL", drl);
         }
+        System.out.println(kieBaseConfiguration.getOption(RuleEngineOption.class));
         kieBase = new KieHelper().addContent(drl, ResourceType.DRL).build(kieBaseConfiguration);
         dumpReteIfNeeded();
     }

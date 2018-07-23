@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 public class EG1  extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Param({"phreak", "reteoo"})
+    //@Param({"phreak", "reteoo"})
     protected String engineOption;
 
 
@@ -38,9 +38,10 @@ public class EG1  extends AbstractPaperBenchmark {
         protected int nbrAgendaGroups;
 
         @Param({"1|4", "1|8"})
-        protected String segments = "1, 3, 3, 3|2, 2, 2, 2";
+        protected String segments;
 
-        @Param({"1", "4", "8", "16"})
+        //@Param({"1", "4", "8", "16"})
+        @Param({"2"})
         protected int nbrObjectsPerType;
 
         @Param({"300"})

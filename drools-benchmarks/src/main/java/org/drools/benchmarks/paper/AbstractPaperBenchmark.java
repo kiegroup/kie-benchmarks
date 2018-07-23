@@ -47,8 +47,6 @@ import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//@Warmup(iterations = 15000)
-//@Measurement(iterations = 5000)
 @Warmup(iterations = 1)
 @Measurement(iterations = 1)
 @Fork(0)
@@ -75,7 +73,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
                                                      lastRuleSalience, true, constrainToPatternA);
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
-        System.out.println(rules);
+        //System.out.println(rules);
 
         if (engineOption != null) {
             createKieBaseFromDrl( rules, RuleEngineOption.determineOption( engineOption ) );
@@ -95,7 +93,6 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
     @Override
     public void setup() {
         System.out.println("\n");
-
         System.out.println("setup ksession run()");
 
         // reset these, as tests change them.
@@ -114,7 +111,6 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
 
     public void test() {
         System.out.println("\n");
-
         System.out.println("test run()");
 
         FactHandle fhA = kieSession.insert(a);
@@ -194,12 +190,4 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         return bean;
     }
 
-    public static class Action {
-        private ActionType actionType;
-        //private
-    }
-
-    private enum ActionType {
-        INSERT, UPDATE, DELETE;
-    }
 }

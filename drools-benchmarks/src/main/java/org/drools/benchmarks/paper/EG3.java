@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 public class EG3 extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Param({"phreak", "reteoo"})
+    //@Param({"phreak", "reteoo"})
     protected String engineOption;
 
     @Warmup(iterations = 10)
