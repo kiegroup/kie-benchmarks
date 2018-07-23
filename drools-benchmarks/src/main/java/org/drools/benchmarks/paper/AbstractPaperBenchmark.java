@@ -36,11 +36,9 @@ import org.drools.benchmarks.domain.J;
 import org.drools.benchmarks.domain.K;
 import org.drools.benchmarks.domain.L;
 import org.kie.api.runtime.rule.FactHandle;
-import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
@@ -68,8 +66,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
                              boolean constrainToPatternA,
                              int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups, int nbrObjectsPerType,int lastRuleSalience, boolean singleLastBean,
                              int agendaGroup, int exitValue) {
-        String suffixDrl = "rule exitRule auto-focus salience 1000 when\n   A(otherValue >= exitValue)\nthen\n kcontext.getKieRuntime().halt();\nend\n";
-        suffixDrl =  "global Integer exitValue;\n\n" + suffixDrl + "\n\n";
+        String suffixDrl = "";
 
         drlProvider = new RulesWithSegmentsProvider( suffixDrl, firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                                                      true, constrainToPatternA);
@@ -97,7 +94,6 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         beanList.get(beanList.size()-1).setId(0);
 
         createKieSession();
-        kieSession.setGlobal("exitValue", exitValue);
     }
 
     public void test() {
@@ -110,9 +106,11 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
 
         kieSession.getAgenda().getAgendaGroup("Group" + agendaGroup).setFocus();
 
-        int fired = kieSession.fireAllRules();
+        int fired = kieSession.fireAllRules(exitValue);
 
-        logger.debug("fired {}", fired);
+        if (logger.isDebugEnabled()) {
+            logger.debug( "fired {}", fired );
+        }
     }
 
     private void createData(int objectsPerType, boolean singleLastBean) {
