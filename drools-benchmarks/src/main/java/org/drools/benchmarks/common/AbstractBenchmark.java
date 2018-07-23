@@ -16,6 +16,7 @@
 package org.drools.benchmarks.common;
 
 import java.util.concurrent.TimeUnit;
+
 import org.drools.benchmarks.common.util.ReteDumper;
 import org.drools.benchmarks.common.util.TestUtil;
 import org.kie.api.KieBase;
@@ -129,8 +130,10 @@ public abstract class AbstractBenchmark {
     private KieBaseConfiguration getKieBaseConfiguration() {
         final KieBaseConfiguration kieBaseConfiguration = KnowledgeBaseFactory.newKnowledgeBaseConfiguration();
         if (TestUtil.useReteoo()) {
+            System.out.println("Using ReteOO!!!");
             kieBaseConfiguration.setOption(RuleEngineOption.RETEOO);
         } else {
+            System.out.println("Using PHREAK!!!");
             kieBaseConfiguration.setOption(RuleEngineOption.PHREAK);
         }
         return kieBaseConfiguration;
