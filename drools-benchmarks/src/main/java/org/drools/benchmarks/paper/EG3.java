@@ -34,12 +34,12 @@ public class EG3 extends AbstractPaperBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Param({"1", "3"})
-    private int nbrAgendaGroups = 1;
+    private int nbrAgendaGroups = 3;
 
-    @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+    @Param({"1, 3|2, 2", "1, 3, 3|2, 2, 2", "1, 3, 3, 3|2, 2, 2, 2"})
     private String segments;
 
-    @Param({"4"})
+    @Param({"1", "4", "8"})
     private int nbrObjectsPerType = 4;
 
     @Param({"300"})

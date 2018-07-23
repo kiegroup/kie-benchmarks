@@ -90,8 +90,13 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
     @Override
     public void setup() {
         System.out.println("\n");
+
+        // reset these, as tests change them.
+        a.setId(0);
+        a.setOtherValue(0);
+        beanList.get(beanList.size()-1).setId(0);
+
         createKieSession();
-        a.setOtherValue(0); // must reset a
         kieSession.setGlobal("exitValue", exitValue);
     }
 
@@ -102,8 +107,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         for (AbstractBean bean : beanList) {
             kieSession.insert(bean);
         }
-
-        //for ( int i = 0; i < nbrAgendaGroups)
+        
         kieSession.getAgenda().getAgendaGroup("Group" + agendaGroup).setFocus();
 
         int fired = kieSession.fireAllRules();
