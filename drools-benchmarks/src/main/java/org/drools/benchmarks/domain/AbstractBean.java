@@ -78,6 +78,6 @@ public abstract class AbstractBean {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" + id + ")";
+        return getClass().getSimpleName() + "(" + id + ":" + value + ")";
     }
 }

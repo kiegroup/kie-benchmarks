@@ -28,6 +28,7 @@ import org.drools.benchmarks.domain.AbstractBean;
 import org.drools.benchmarks.domain.B;
 import org.drools.benchmarks.domain.BeanType;
 import org.drools.benchmarks.domain.C;
+import org.drools.benchmarks.domain.Counter;
 import org.drools.benchmarks.domain.D;
 import org.drools.benchmarks.domain.E;
 import org.drools.benchmarks.domain.F;
@@ -39,12 +40,6 @@ import org.drools.benchmarks.domain.K;
 import org.drools.benchmarks.domain.L;
 import org.kie.api.runtime.rule.FactHandle;
 import org.kie.internal.builder.conf.RuleEngineOption;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Level;
-import org.openjdk.jmh.annotations.Measurement;
-import org.openjdk.jmh.annotations.Param;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,6 +48,7 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
     protected RulesWithSegmentsProvider drlProvider;
 
     protected A                  a;
+    protected Counter            counter;
     protected List<AbstractBean> beanList = new ArrayList<>();
     protected List<AbstractBean> lastBeanList = new ArrayList<>();
     protected int exitValue;
@@ -62,13 +58,14 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
 
     public abstract void setupKieBase(String segments, int nbrAgendaGroups, int nbrObjectsPerType, int exitValue, String engineOption );
 
-    public void setupKieBase(final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
+    public void setupKieBase(String prefix, final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
                              boolean constrainToPatternA,
-                             int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups, int nbrObjectsPerType,int lastRuleSalience, boolean singleLastBean,
+                             int[] segmentsPerLevel, int[] nodesPerSegment, int nbrAgendaGroups, int nbrObjectsPerType, int lastRuleSalience, boolean singleLastBean,
                              int agendaGroup, int exitValue, String engineOption) {
-        String suffixDrl = "";
+        String prefixDrl = "global " + Counter.class.getName() + " counter;\n\n";
+        prefixDrl += prefix;
 
-        drlProvider = new RulesWithSegmentsProvider( suffixDrl, firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
+        drlProvider = new RulesWithSegmentsProvider( prefixDrl, firstConsequence, consequence, lastConsequence, lastOfGroupConsequence,
                                                      lastRuleSalience, true, constrainToPatternA);
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
@@ -104,6 +101,9 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
         Collections.shuffle(beanList, new Random(0L));
 
         createKieSession();
+        counter = new Counter(0, 0);
+        kieSession.setGlobal("counter", counter);
+
     }
 
     public void test() {
@@ -124,6 +124,7 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
         }
 
         System.out.println(a);
+        System.out.println(counter);
     }
 
     private void createData(int objectsPerType, boolean singleLastBean) {
@@ -150,6 +151,10 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
                 beanList.add(bean);
             }
             objectsPerType = objectsPerType / 2;
+            if (objectsPerType < 1) {
+                objectsPerType = 1;
+            }
+
         }
 
         // there are as many last beans as there are rules. One per rule.

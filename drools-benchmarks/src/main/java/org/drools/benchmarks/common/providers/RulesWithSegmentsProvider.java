@@ -23,7 +23,7 @@ import org.drools.benchmarks.domain.A;
  */
 public class RulesWithSegmentsProvider implements DrlProvider {
     private final boolean appendDrlHeader;
-    private final String global;
+    private final String prefix;
     private final String firstConsequence;
     private final String consequence;
     private final String lastOfGroupConsequence;
@@ -38,9 +38,9 @@ public class RulesWithSegmentsProvider implements DrlProvider {
 
     private int lastPatternCounter = 0;
 
-    public RulesWithSegmentsProvider(final String global, final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
+    public RulesWithSegmentsProvider(final String prefix, final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
                                      int lastRuleSalience, boolean appendDrlHeader, boolean constrainlastPatternToA) {
-        this.global = global;
+        this.prefix = prefix;
         this.firstConsequence = firstConsequence;
         this.consequence = consequence;
         this.lastConsequence = lastConsequence;
@@ -67,7 +67,7 @@ public class RulesWithSegmentsProvider implements DrlProvider {
         if (appendDrlHeader) {
             drlBuilder.append("import " + A.class.getPackage().getName() + ".*;\n");
         }
-        drlBuilder.append( global + "\n" );
+        drlBuilder.append(prefix + "\n" );
 
 
         String[][] patterns = buildPatterns(segmentsPerLevel, nodesPerSegment);
@@ -85,10 +85,14 @@ public class RulesWithSegmentsProvider implements DrlProvider {
             }
             drlBuilder.append("rule R" + i + " agenda-group \"Group" + agendaGroup + "\" ");
 
-            if(i == patterns.length  -1) {
+            int salience = patterns.length-i;
+
+            if(i == patterns.length  -1 && lastRuleSalience != -1) {
                 // on last rule
-                drlBuilder.append("salience " + lastRuleSalience + " ");
+                salience = lastRuleSalience;
             }
+
+            drlBuilder.append("salience " + salience + " ");
 
             drlBuilder.append( "  when\n");
 
