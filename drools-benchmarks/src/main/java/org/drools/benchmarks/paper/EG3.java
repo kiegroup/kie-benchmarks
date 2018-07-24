@@ -49,7 +49,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_1  extends Iterations.EG1_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_1() {
             super(new EG1());
@@ -62,7 +61,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_1_1  extends Iterations.EG1_1_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_1_1() {
             super(new EG1());
@@ -75,7 +73,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_1_2  extends Iterations.EG1_1_2 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_1_2() {
             super(new EG1());
@@ -88,7 +85,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_2  extends Iterations.EG1_2 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_2() {
             super(new EG1());
@@ -101,7 +97,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_2_1  extends Iterations.EG1_2_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_2_1() {
             super(new EG1());
@@ -114,7 +109,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_2_2  extends Iterations.EG1_2_2 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_2_2() {
             super(new EG1());
@@ -127,7 +121,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_3  extends Iterations.EG1_3 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_3() {
             super(new EG1());
@@ -140,7 +133,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_3_1  extends Iterations.EG1_3_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_3_1() {
             super(new EG1());
@@ -153,7 +145,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_3_2  extends Iterations.EG1_3_2 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_3_2() {
             super(new EG1());
@@ -166,7 +157,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_4  extends Iterations.EG1_4 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_4() {
             super(new EG1());
@@ -179,7 +169,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_4_1  extends Iterations.EG1_4_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_4_1() {
             super(new EG1());
@@ -209,8 +198,6 @@ public class EG3 extends AbstractPaperBenchmark {
             super(new EG1());
         }
 
-        
-
         @Benchmark
         public void test() {
             strategy.test();
@@ -230,7 +217,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_5_2  extends Iterations.EG1_5_2 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_5_2() {
             super(new EG1());
@@ -243,7 +229,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_6  extends Iterations.EG1_6 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_6() {
             super(new EG1());
@@ -256,7 +241,6 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_6_1  extends Iterations.EG1_6_1 {
-        private AbstractPaperBenchmark strategy;
 
         public EG3_6_1() {
             super(new EG1());
@@ -269,8 +253,7 @@ public class EG3 extends AbstractPaperBenchmark {
     }
 
     public static class EG3_6_2  extends Iterations.EG1_6_2 {
-        private AbstractPaperBenchmark strategy;
-
+        
         public EG3_6_2() {
             super(new EG1());
         }

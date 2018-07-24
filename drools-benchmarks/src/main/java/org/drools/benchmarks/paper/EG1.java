@@ -52,11 +52,6 @@ public class EG1 extends AbstractPaperBenchmark {
             super(new EG1());
         }
 
-        @Setup(Level.Trial)
-        public void setupKieBase() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
-        }
-
         @Benchmark
         public void test() {
             strategy.test();
@@ -65,14 +60,8 @@ public class EG1 extends AbstractPaperBenchmark {
 
     public static class EG1_1_1  extends Iterations.EG1_1_1 {
 
-
         public EG1_1_1() {
             super(new EG1());
-        }
-
-        @Setup(Level.Trial)
-        public void setupKieBase() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
         }
 
         @Benchmark
