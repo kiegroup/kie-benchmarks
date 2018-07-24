@@ -72,7 +72,7 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
                                                      lastRuleSalience, true, constrainToPatternA);
 
         String rules = drlProvider.getDrl(segmentsPerLevel, nodesPerSegment, nbrAgendaGroups);
-        //System.out.println(rules);
+        System.out.println(rules);
 
         if (engineOption != null) {
             createKieBaseFromDrl( rules, RuleEngineOption.determineOption( engineOption ) );
@@ -122,6 +122,8 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
         if (logger.isDebugEnabled()) {
             logger.debug( "fired {}", fired );
         }
+
+        System.out.println(a);
     }
 
     private void createData(int objectsPerType, boolean singleLastBean) {
@@ -147,6 +149,7 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
                 AbstractBean bean = newObject(BeanType.valueOf(String.valueOf(beanType)), id++, value++);
                 beanList.add(bean);
             }
+            objectsPerType = objectsPerType / 2;
         }
 
         // there are as many last beans as there are rules. One per rule.

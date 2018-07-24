@@ -57,30 +57,30 @@ public class EG1 extends AbstractPaperBenchmark {
             strategy.test();
         }
     }
-
-    public static class EG1_1_1  extends Iterations.EG1_1_1 {
-
-        public EG1_1_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_1_2  extends Iterations.EG1_1_2 {
-
-        public EG1_1_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//
+//    public static class EG1_1_1  extends Iterations.EG1_1_1 {
+//
+//        public EG1_1_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_1_2  extends Iterations.EG1_1_2 {
+//
+//        public EG1_1_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
     public static class EG1_2  extends Iterations.EG1_2 {
 
@@ -92,31 +92,32 @@ public class EG1 extends AbstractPaperBenchmark {
         public void test() {
             strategy.test();
         }
+
     }
 
-    public static class EG1_2_1  extends Iterations.EG1_2_1 {
-
-        public EG1_2_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_2_2  extends Iterations.EG1_2_2 {
-
-        public EG1_2_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class EG1_2_1  extends Iterations.EG1_2_1 {
+//
+//        public EG1_2_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_2_2  extends Iterations.EG1_2_2 {
+//
+//        public EG1_2_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
     public static class EG1_3  extends Iterations.EG1_3 {
 
@@ -130,29 +131,29 @@ public class EG1 extends AbstractPaperBenchmark {
         }
     }
 
-    public static class EG1_3_1  extends Iterations.EG1_3_1 {
-
-        public EG1_3_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_3_2  extends Iterations.EG1_3_2 {
-
-        public EG1_3_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class EG1_3_1  extends Iterations.EG1_3_1 {
+//
+//        public EG1_3_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_3_2  extends Iterations.EG1_3_2 {
+//
+//        public EG1_3_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
     public static class EG1_4  extends Iterations.EG1_4 {
 
@@ -166,29 +167,29 @@ public class EG1 extends AbstractPaperBenchmark {
         }
     }
 
-    public static class EG1_4_1  extends Iterations.EG1_4_1 {
-
-        public EG1_4_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_4_2  extends Iterations.EG1_4_2 {
-
-        public EG1_4_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class EG1_4_1  extends Iterations.EG1_4_1 {
+//
+//        public EG1_4_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_4_2  extends Iterations.EG1_4_2 {
+//
+//        public EG1_4_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
     public static class EG1_5  extends Iterations.EG1_5 {
 
@@ -202,64 +203,64 @@ public class EG1 extends AbstractPaperBenchmark {
         }
     }
 
-    public static class EG1_5_1  extends Iterations.EG1_5_1 {
+//    public static class EG1_5_1  extends Iterations.EG1_5_1 {
+//
+//        public EG1_5_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_5_2  extends Iterations.EG1_5_2 {
+//
+//        public EG1_5_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_6  extends Iterations.EG1_6 {
+//
+//        public EG1_6() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
-        public EG1_5_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_5_2  extends Iterations.EG1_5_2 {
-
-        public EG1_5_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_6  extends Iterations.EG1_6 {
-
-        public EG1_6() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_6_1  extends Iterations.EG1_6_1 {
-
-        public EG1_6_1() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class EG1_6_2  extends Iterations.EG1_6_2 {
-
-        public EG1_6_2() {
-            super(new EG1());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class EG1_6_1  extends Iterations.EG1_6_1 {
+//
+//        public EG1_6_1() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class EG1_6_2  extends Iterations.EG1_6_2 {
+//
+//        public EG1_6_2() {
+//            super(new EG1());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
 }
