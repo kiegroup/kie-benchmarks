@@ -26,7 +26,6 @@ public class Iterations {
     @Measurement(iterations = 20)
     //@Timeout()
     public static class BaseInteration {
-        @Param({"phreak", "reteoo"})
         protected String engineOption;
 
         protected AbstractPaperBenchmark strategy;
@@ -47,21 +46,19 @@ public class Iterations {
         }
     }
 
-    @Warmup(iterations = 40)
-    @Measurement(iterations = 40)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
     public static class EG1_1  extends BaseInteration  {
         @Param({"1"})
         protected int nbrAgendaGroups;
 
-        @Param({"1|4", "1|8"})
-        //@Param({"1|4"})
+        @Param({"1|8"})
         protected String segments;
 
-        @Param({"1", "4"})
-        //@Param({"1"})
+        @Param({"32"})
         protected int nbrObjectsPerType;
 
-        @Param({"300"})
+        @Param({"100"})
         protected int exitValue;
 
         public EG1_1(AbstractPaperBenchmark strategy) {
@@ -74,43 +71,50 @@ public class Iterations {
         }
     }
 
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 5)
-    public static class EG1_1_1  extends EG1_1  {
-        @Param({"8"})
-        //@Param({"1"})
-        protected int nbrObjectsPerType;
+//    @Warmup(iterations = 0)
+//    @Measurement(iterations = 1)
+//    public static class EG1_1_1  extends EG1_1  {
+//        @Param({"8"})
+//        //@Param({"1"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_1_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//
+//        @Param({"1"})
+//        protected int exitValue;
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 1)
+//    public static class EG1_1_2  extends EG1_1  {
+//        @Param({"16"})
+//        //@Param({"1"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_1_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//
+//        @Param({"1"})
+//        protected int exitValue;
+//    }
 
-        public EG1_1_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 5)
-    public static class EG1_1_2  extends EG1_1  {
-        @Param({"16"})
-        //@Param({"1"})
-        protected int nbrObjectsPerType;
-
-        public EG1_1_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 30)
-    @Measurement(iterations = 30)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
     public static class EG1_2  extends BaseInteration  {
-        @Param({"1", "2"})
+        //@Param({"1", "2"})
+        @Param({"1"})
         protected int nbrAgendaGroups;
 
         @Param({"1, 2, 2|2, 2, 2"})
         protected String segments;
 
-        @Param({"1", "4"})
+        @Param({"32"}) // 128 Rete doesn't return
         protected int nbrObjectsPerType;
 
-        @Param({"300"})
+        @Param({"100"})
         protected int exitValue;
 
         public EG1_2(AbstractPaperBenchmark strategy) {
@@ -123,41 +127,71 @@ public class Iterations {
         }
     }
 
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 5)
-    public static class EG1_2_1 extends EG1_2 {
-        @Param({"8"})
-        protected int nbrObjectsPerType;
+//    @Warmup(iterations = 0)
+//    @Measurement(iterations = 1)
+//    public static class EG1_2_RETEOO  extends BaseInteration  {
+//        @Param({"reteoo"})
+//        protected String engineOption;
+//
+//        //@Param({"1", "2"})
+//        @Param({"1"})
+//        protected int nbrAgendaGroups;
+//
+//        @Param({"1, 2, 2|2, 2, 2"})
+//        protected String segments;
+//
+//        @Param({"32"}) // 128 Rete doesn't return
+//        protected int nbrObjectsPerType;
+//
+//        @Param({"10"})
+//        protected int exitValue;
+//
+//        public EG1_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//    }
 
-        public EG1_2_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
+//    @Warmup(iterations = 5)
+//    @Measurement(iterations = 5)
+//    public static class EG1_2_1 extends EG1_2 {
+//        @Param({"8"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_2_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 5)
+//    public static class EG1_2_2 extends EG1_2 {
+//        @Param({"16"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_2_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 5)
-    public static class EG1_2_2 extends EG1_2 {
-        @Param({"16"})
-        protected int nbrObjectsPerType;
-
-        public EG1_2_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 20)
-    @Measurement(iterations = 10)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
     public static class EG1_3 extends BaseInteration {
-        @Param({"1", "4"})
+        //@Param({"1", "4"})
+        @Param({"1"})
         protected int nbrAgendaGroups;
 
         @Param({"1, 2, 2, 2|2, 2, 2, 2"})
         protected String segments;
 
-        @Param({"1", "4"})
+        @Param({"32"}) // 64 Rete doesn't return
         protected int nbrObjectsPerType;
 
-        @Param({"300"})
+        @Param({"100"})
         protected int exitValue;
 
         public EG1_3(AbstractPaperBenchmark strategy) {
@@ -169,42 +203,43 @@ public class Iterations {
             strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
         }
     }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_3_1 extends EG1_3 {
+//        @Param({"8"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_3_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_3_2 extends EG1_3 {
+//        @Param({"16"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_3_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_3_1 extends EG1_3 {
-        @Param({"8"})
-        protected int nbrObjectsPerType;
-
-        public EG1_3_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_3_2 extends EG1_3 {
-        @Param({"16"})
-        protected int nbrObjectsPerType;
-
-        public EG1_3_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 10)
-    @Measurement(iterations = 10)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
     public static class EG1_4 extends BaseInteration {
-        @Param({"1", "3"})
+        //@Param({"1", "3"})
+        @Param({"1"})
         protected int nbrAgendaGroups;
 
         @Param({"1, 3, 3|2, 2, 2"})
         protected String segments;
 
-        @Param({"1", "4"})
+        @Param({"32"})
         protected int nbrObjectsPerType;
 
-        @Param({"300"})
+        @Param({"100"})
         protected int exitValue;
 
         public EG1_4(AbstractPaperBenchmark strategy) {
@@ -217,41 +252,44 @@ public class Iterations {
         }
     }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_4_1 extends EG1_4 {
-        @Param({"8"})
-        protected int nbrObjectsPerType;
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_4_1 extends EG1_4 {
+//        @Param({"8"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_4_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_4_2 extends EG1_4 {
+//        @Param({"16"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_4_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
-        public EG1_4_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_4_2 extends EG1_4 {
-        @Param({"16"})
-        protected int nbrObjectsPerType;
 
-        public EG1_4_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 5)
+    @Warmup(iterations = 0)
+    @Measurement(iterations = 1)
     public static class EG1_5 extends BaseInteration {
-        @Param({"1", "3"})
+        //@Param({"1", "3"})
+        @Param({"1"})
         protected int nbrAgendaGroups;
 
         @Param({"1, 3, 3, 3|2, 2, 2, 2"})
         protected String segments;
 
-        @Param({"1", "4"})
+        @Param({"32"})
         protected int nbrObjectsPerType;
 
-        @Param({"300"})
+        @Param({"100"})
         protected int exitValue;
 
         public EG1_5(AbstractPaperBenchmark strategy) {
@@ -264,74 +302,115 @@ public class Iterations {
         }
     }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_5_1 extends EG1_5 {
-        @Param({"8"})
-        protected int nbrObjectsPerType;
+//    @Warmup(iterations = 10)
+//    @Measurement(iterations = 20)
+//    public static class EG1_5_RETEOO extends BaseInteration {
+//        @Param({"reteoo"})
+//        protected String engineOption;
+//
+//        //@Param({"1", "3"})
+//        @Param({"1"})
+//        protected int nbrAgendaGroups;
+//
+//        @Param({"1, 3, 3, 3|2, 2, 2, 2"})
+//        protected String segments;
+//
+//        @Param({"32"})
+//        protected int nbrObjectsPerType;
+//
+//        @Param({"100"})
+//        protected int exitValue;
+//
+//        public EG1_5_RETEOO(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//    }
+//
+//    @Warmup(iterations = 100)
+//    @Measurement(iterations = 20)
+//    public static class EG1_5_PHREAK extends EG1_5_RETEOO {
+//        @Param({"phreak"})
+//        protected String engineOption;
+//
+//        public EG1_5_PHREAK(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
-        public EG1_5_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_5_1 extends EG1_5 {
+//        @Param({"8"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_5_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_5_2 extends EG1_5 {
+//        @Param({"16"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_5_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_5_2 extends EG1_5 {
-        @Param({"16"})
-        protected int nbrObjectsPerType;
+//    @Warmup(iterations = 0)
+//    @Measurement(iterations = 1)
+//    public static class EG1_6 extends BaseInteration {
+//        //@Param({"1", "3"})
+//        @Param({"1"})
+//        protected int nbrAgendaGroups;
+//
+//        @Param({"1, 3, 3, 3|3, 3, 3, 3"})
+//        protected String segments;
+//
+//        @Param({"64"})
+//        protected int nbrObjectsPerType;
+//
+//        @Param({"1"})
+//        protected int exitValue;
+//
+//        public EG1_6(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//    }
 
-        public EG1_5_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 5)
-    @Measurement(iterations = 5)
-    public static class EG1_6 extends BaseInteration {
-        @Param({"1", "3"})
-        protected int nbrAgendaGroups;
-
-        @Param({"1, 3, 3, 3|3, 3, 3, 3"})
-        protected String segments;
-
-        @Param({"1", "4"})
-        protected int nbrObjectsPerType;
-
-        @Param({"300"})
-        protected int exitValue;
-
-        public EG1_6(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-
-        @Setup(Level.Trial)
-        public void setupKieBase() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
-        }
-    }
-
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_6_1 extends EG1_6 {
-        @Param({"8"})
-        protected int nbrObjectsPerType;
-
-        public EG1_6_1(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
-
-    @Warmup(iterations = 1)
-    @Measurement(iterations = 3)
-    public static class EG1_6_2 extends EG1_6 {
-        @Param({"16"})
-        protected int nbrObjectsPerType;
-
-        public EG1_6_2(AbstractPaperBenchmark strategy) {
-            super(strategy);
-        }
-    }
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_6_1 extends EG1_6 {
+//        @Param({"8"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_6_1(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
+//
+//    @Warmup(iterations = 1)
+//    @Measurement(iterations = 3)
+//    public static class EG1_6_2 extends EG1_6 {
+//        @Param({"16"})
+//        protected int nbrObjectsPerType;
+//
+//        public EG1_6_2(AbstractPaperBenchmark strategy) {
+//            super(strategy);
+//        }
+//    }
 
     public static int[] getNodesPerSegment(String nodesPerSegmentStr) {
         int split = nodesPerSegmentStr.indexOf('|');
