@@ -2,9 +2,9 @@ package org.drools.benchmarks.paper;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
@@ -12,6 +12,8 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
+import org.openjdk.jmh.annotations.Timeout;
 import org.openjdk.jmh.annotations.Warmup;
 
 public class Iterations {
@@ -20,9 +22,29 @@ public class Iterations {
     @State(Scope.Thread)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Fork(1)
+    @Warmup(iterations = 30)
+    @Measurement(iterations = 20)
+    //@Timeout()
     public static class BaseInteration {
         @Param({"phreak", "reteoo"})
         protected String engineOption;
+
+        protected AbstractPaperBenchmark strategy;
+
+        public BaseInteration(AbstractPaperBenchmark strategy) {
+            this.strategy = strategy;
+        }
+
+
+        @Setup(Level.Iteration)
+        public void setup() {
+            strategy.setup();
+        }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
+        }
     }
 
     @Warmup(iterations = 40)
@@ -41,6 +63,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 5)
@@ -49,6 +80,10 @@ public class Iterations {
         @Param({"8"})
         //@Param({"1"})
         protected int nbrObjectsPerType;
+
+        public EG1_1_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -57,6 +92,10 @@ public class Iterations {
         @Param({"16"})
         //@Param({"1"})
         protected int nbrObjectsPerType;
+
+        public EG1_1_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 30)
@@ -73,6 +112,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 5)
@@ -80,6 +128,10 @@ public class Iterations {
     public static class EG1_2_1 extends EG1_2 {
         @Param({"8"})
         protected int nbrObjectsPerType;
+
+        public EG1_2_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -87,6 +139,10 @@ public class Iterations {
     public static class EG1_2_2 extends EG1_2 {
         @Param({"16"})
         protected int nbrObjectsPerType;
+
+        public EG1_2_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 20)
@@ -103,6 +159,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_3(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -110,6 +175,10 @@ public class Iterations {
     public static class EG1_3_1 extends EG1_3 {
         @Param({"8"})
         protected int nbrObjectsPerType;
+
+        public EG1_3_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -117,6 +186,10 @@ public class Iterations {
     public static class EG1_3_2 extends EG1_3 {
         @Param({"16"})
         protected int nbrObjectsPerType;
+
+        public EG1_3_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 10)
@@ -133,6 +206,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_4(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -140,6 +222,10 @@ public class Iterations {
     public static class EG1_4_1 extends EG1_4 {
         @Param({"8"})
         protected int nbrObjectsPerType;
+
+        public EG1_4_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -147,6 +233,10 @@ public class Iterations {
     public static class EG1_4_2 extends EG1_4 {
         @Param({"16"})
         protected int nbrObjectsPerType;
+
+        public EG1_4_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 5)
@@ -163,6 +253,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_5(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -170,6 +269,10 @@ public class Iterations {
     public static class EG1_5_1 extends EG1_5 {
         @Param({"8"})
         protected int nbrObjectsPerType;
+
+        public EG1_5_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -177,6 +280,10 @@ public class Iterations {
     public static class EG1_5_2 extends EG1_5 {
         @Param({"16"})
         protected int nbrObjectsPerType;
+
+        public EG1_5_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 5)
@@ -193,6 +300,15 @@ public class Iterations {
 
         @Param({"300"})
         protected int exitValue;
+
+        public EG1_6(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
+
+        @Setup(Level.Trial)
+        public void setupKieBase() {
+            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -200,6 +316,10 @@ public class Iterations {
     public static class EG1_6_1 extends EG1_6 {
         @Param({"8"})
         protected int nbrObjectsPerType;
+
+        public EG1_6_1(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     @Warmup(iterations = 1)
@@ -207,6 +327,10 @@ public class Iterations {
     public static class EG1_6_2 extends EG1_6 {
         @Param({"16"})
         protected int nbrObjectsPerType;
+
+        public EG1_6_2(AbstractPaperBenchmark strategy) {
+            super(strategy);
+        }
     }
 
     public static int[] getNodesPerSegment(String nodesPerSegmentStr) {
