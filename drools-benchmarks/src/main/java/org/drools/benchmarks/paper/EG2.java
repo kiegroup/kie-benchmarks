@@ -22,6 +22,7 @@ import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.annotations.TearDown;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,6 +73,11 @@ public class EG2 extends AbstractPaperBenchmark {
         public void test() {
             strategy.test();
         }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
+        }
     }
 
     public static class EG2_2  extends Iterations.EG1_2 {
@@ -94,6 +100,11 @@ public class EG2 extends AbstractPaperBenchmark {
         @Benchmark
         public void test() {
             strategy.test();
+        }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
         }
     }
 
@@ -118,6 +129,11 @@ public class EG2 extends AbstractPaperBenchmark {
         public void test() {
             strategy.test();
         }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
+        }
     }
 
     public static class EG2_2_2  extends Iterations.EG1_2_2 {
@@ -140,6 +156,11 @@ public class EG2 extends AbstractPaperBenchmark {
         @Benchmark
         public void test() {
             strategy.test();
+        }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
         }
     }
 

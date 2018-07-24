@@ -19,6 +19,7 @@ package org.drools.benchmarks.paper;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.TearDown;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,6 +69,11 @@ public class EG1 extends AbstractPaperBenchmark {
         public void test() {
             strategy.test();
         }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
+        }
     }
 
     public static class EG1_2  extends Iterations.EG1_2 {
@@ -90,6 +96,11 @@ public class EG1 extends AbstractPaperBenchmark {
         @Benchmark
         public void test() {
             strategy.test();
+        }
+
+        @TearDown(Level.Iteration)
+        public void tearDown() {
+            strategy.tearDown();
         }
     }
 
