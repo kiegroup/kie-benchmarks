@@ -42,13 +42,13 @@ import org.kie.internal.builder.conf.RuleEngineOption;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.Warmup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Fork(2)
-public class AbstractPaperBenchmark extends AbstractBenchmark {
+public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
     private Logger logger = LoggerFactory.getLogger(getClass());
     protected RulesWithSegmentsProvider drlProvider;
 
@@ -60,6 +60,7 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
     protected int nbrAgendaGroups;
 
 
+    public abstract void setupKieBase(String segments, int nbrAgendaGroups, int nbrObjectsPerType, int exitValue, String engineOption );
 
     public void setupKieBase(final String firstConsequence, final String consequence, final String lastConsequence, final String lastOfGroupConsequence,
                              boolean constrainToPatternA,
@@ -80,18 +81,16 @@ public class AbstractPaperBenchmark extends AbstractBenchmark {
         }
 
         System.out.println("\n");
+        System.out.println("setup ksession trial()");
         createData(nbrObjectsPerType, singleLastBean);
 
         this.agendaGroup = agendaGroup;
         this.nbrAgendaGroups = nbrAgendaGroups;
         this.exitValue = exitValue;
     }
-
-    @Setup(Level.Iteration)
-    @Override
     public void setup() {
         System.out.println("\n");
-        System.out.println("setup ksession run()");
+        System.out.println("setup ksession iteration()");
 
         // reset these, as tests change them.
         a.setId(0);
