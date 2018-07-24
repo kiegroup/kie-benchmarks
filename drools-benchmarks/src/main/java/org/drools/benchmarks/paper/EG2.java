@@ -80,10 +80,10 @@ public class EG2 extends AbstractPaperBenchmark {
         }
     }
 
-    public static class EG2_2  extends Iterations.EG1_2 {
+    public static class EG2_1_1  extends Iterations.EG1_1_1 {
         private AbstractPaperBenchmark strategy;
 
-        public EG2_2() {
+        public EG2_1_1() {
             this.strategy = new EG1();
         }
 
@@ -108,61 +108,117 @@ public class EG2 extends AbstractPaperBenchmark {
         }
     }
 
-    public static class EG2_2_1  extends Iterations.EG1_2_1 {
-        private AbstractPaperBenchmark strategy;
-
-        public EG2_2_1() {
-            this.strategy = new EG1();
-        }
-
-        @Setup(Level.Trial)
-        public void setupKieBase() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
-        }
-
-        @Setup(Level.Iteration)
-        public void setup() {
-            strategy.setup();
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-
-        @TearDown(Level.Iteration)
-        public void tearDown() {
-            strategy.tearDown();
-        }
-    }
-
-    public static class EG2_2_2  extends Iterations.EG1_2_2 {
-        private AbstractPaperBenchmark strategy;
-
-        public EG2_2_2() {
-            this.strategy = new EG1();
-        }
-
-        @Setup(Level.Trial)
-        public void setupKieBase() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
-        }
-
-        @Setup(Level.Iteration)
-        public void setup() {
-            strategy.setup();
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-
-        @TearDown(Level.Iteration)
-        public void tearDown() {
-            strategy.tearDown();
-        }
-    }
+//    public static class EG2_1_2  extends Iterations.EG1_1_2 {
+//        private AbstractPaperBenchmark strategy;
+//
+//        public EG2_1_2() {
+//            this.strategy = new EG1();
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//
+//        @Setup(Level.Iteration)
+//        public void setup() {
+//            strategy.setup();
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//        @TearDown(Level.Iteration)
+//        public void tearDown() {
+//            strategy.tearDown();
+//        }
+//    }
+//
+//    public static class EG2_2  extends Iterations.EG1_2 {
+//        private AbstractPaperBenchmark strategy;
+//
+//        public EG2_2() {
+//            this.strategy = new EG1();
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//
+//        @Setup(Level.Iteration)
+//        public void setup() {
+//            strategy.setup();
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//        @TearDown(Level.Iteration)
+//        public void tearDown() {
+//            strategy.tearDown();
+//        }
+//    }
+//
+//    public static class EG2_2_1  extends Iterations.EG1_2_1 {
+//        private AbstractPaperBenchmark strategy;
+//
+//        public EG2_2_1() {
+//            this.strategy = new EG1();
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//
+//        @Setup(Level.Iteration)
+//        public void setup() {
+//            strategy.setup();
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//        @TearDown(Level.Iteration)
+//        public void tearDown() {
+//            strategy.tearDown();
+//        }
+//    }
+//
+//    public static class EG2_2_2  extends Iterations.EG1_2_2 {
+//        private AbstractPaperBenchmark strategy;
+//
+//        public EG2_2_2() {
+//            this.strategy = new EG1();
+//        }
+//
+//        @Setup(Level.Trial)
+//        public void setupKieBase() {
+//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//        }
+//
+//        @Setup(Level.Iteration)
+//        public void setup() {
+//            strategy.setup();
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//        @TearDown(Level.Iteration)
+//        public void tearDown() {
+//            strategy.tearDown();
+//        }
+//    }
 
 //    public static class EG2_3  extends Iterations.EG1_3 {
 //        private AbstractPaperBenchmark strategy;

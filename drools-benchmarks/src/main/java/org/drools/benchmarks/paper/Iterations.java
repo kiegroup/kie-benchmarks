@@ -25,8 +25,8 @@ public class Iterations {
         protected String engineOption;
     }
 
-    @Warmup(iterations = 50)
-    @Measurement(iterations = 50)
+    @Warmup(iterations = 40)
+    @Measurement(iterations = 40)
     public static class EG1_1  extends BaseInteration  {
         @Param({"1"})
         protected int nbrAgendaGroups;
@@ -35,12 +35,28 @@ public class Iterations {
         //@Param({"1|4"})
         protected String segments;
 
-        @Param({"1", "4", "8", "16"})
+        @Param({"1", "4"})
         //@Param({"1"})
         protected int nbrObjectsPerType;
 
         @Param({"300"})
         protected int exitValue;
+    }
+
+    @Warmup(iterations = 5)
+    @Measurement(iterations = 5)
+    public static class EG1_1_1  extends EG1_1  {
+        @Param({"8"})
+        //@Param({"1"})
+        protected int nbrObjectsPerType;
+    }
+
+    @Warmup(iterations = 1)
+    @Measurement(iterations = 5)
+    public static class EG1_1_2  extends EG1_1  {
+        @Param({"16"})
+        //@Param({"1"})
+        protected int nbrObjectsPerType;
     }
 
     @Warmup(iterations = 30)
@@ -52,22 +68,22 @@ public class Iterations {
         @Param({"1, 2, 2|2, 2, 2"})
         protected String segments;
 
-        @Param({"1", "4", "8"})
+        @Param({"1", "4"})
         protected int nbrObjectsPerType;
 
         @Param({"300"})
         protected int exitValue;
     }
 
-    @Warmup(iterations = 10)
-    @Measurement(iterations = 10)
+    @Warmup(iterations = 5)
+    @Measurement(iterations = 5)
     public static class EG1_2_1 extends EG1_2 {
         @Param({"8"})
         protected int nbrObjectsPerType;
     }
 
-    @Warmup(iterations = 10)
-    @Measurement(iterations = 10)
+    @Warmup(iterations = 1)
+    @Measurement(iterations = 5)
     public static class EG1_2_2 extends EG1_2 {
         @Param({"16"})
         protected int nbrObjectsPerType;
