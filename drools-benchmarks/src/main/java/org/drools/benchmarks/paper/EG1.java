@@ -118,7 +118,7 @@ public class EG1 extends AbstractPaperBenchmark {
 
         @Setup(Level.Iteration)
         public void setup() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+            strategy.setup();
         }
 
         @Benchmark
@@ -141,7 +141,7 @@ public class EG1 extends AbstractPaperBenchmark {
 
         @Setup(Level.Iteration)
         public void setup() {
-            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+            strategy.setup();
         }
 
         @Benchmark
@@ -164,7 +164,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -187,7 +187,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -210,7 +210,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -233,7 +233,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -256,7 +256,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -279,7 +279,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -302,7 +302,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -325,7 +325,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -348,7 +348,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -371,7 +371,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -394,7 +394,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark
@@ -417,7 +417,7 @@ public class EG1 extends AbstractPaperBenchmark {
 //
 //        @Setup(Level.Iteration)
 //        public void setup() {
-//            strategy.setupKieBase( segments, nbrAgendaGroups, nbrObjectsPerType, exitValue, engineOption);
+//            strategy.setup();
 //        }
 //
 //        @Benchmark

@@ -19,24 +19,24 @@ public class Iterations {
     @BenchmarkMode(Mode.SingleShotTime)
     @State(Scope.Thread)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Fork(0)
+    @Fork(1)
     public static class BaseInteration {
         @Param({"phreak", "reteoo"})
         protected String engineOption;
     }
 
-    @Warmup(iterations = 0)
-    @Measurement(iterations = 1)
+    @Warmup(iterations = 50)
+    @Measurement(iterations = 50)
     public static class EG1_1  extends BaseInteration  {
         @Param({"1"})
         protected int nbrAgendaGroups;
 
-        //@Param({"1|4", "1|8"})
-        @Param({"1|4"})
+        @Param({"1|4", "1|8"})
+        //@Param({"1|4"})
         protected String segments;
 
-        //@Param({"1", "4", "8", "16"})
-        @Param({"1"})
+        @Param({"1", "4", "8", "16"})
+        //@Param({"1"})
         protected int nbrObjectsPerType;
 
         @Param({"300"})
