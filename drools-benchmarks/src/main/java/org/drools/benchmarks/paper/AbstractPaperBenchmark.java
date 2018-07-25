@@ -91,6 +91,7 @@ public abstract class AbstractPaperBenchmark extends AbstractBenchmark {
 
         // reset these, as tests change them.
         a.setId(0);
+        a.setValue(0);
         a.setOtherValue(0);
 
         int id = 0;

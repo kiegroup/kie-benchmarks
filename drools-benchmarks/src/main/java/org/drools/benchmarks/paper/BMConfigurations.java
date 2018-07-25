@@ -24,9 +24,11 @@ public class BMConfigurations {
     @Fork(1)
     @Warmup(iterations = 30)
     @Measurement(iterations = 20)
-    @Timeout(time = 3, timeUnit = TimeUnit.MINUTES)
+    @Timeout(time = 10, timeUnit = TimeUnit.MINUTES)
     public static class BMBaseConf {
         //@Param({"phreak", "reteoo"})
+        //@Param({"phreak"})
+        //@Param({"reteoo"})
         protected String engineOption;
 
         @Param({"8", "16", "32"})

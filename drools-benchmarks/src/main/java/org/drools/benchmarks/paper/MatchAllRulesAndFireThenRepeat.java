@@ -39,7 +39,7 @@ public class MatchAllRulesAndFireThenRepeat extends AbstractPaperBenchmark {
         int[] segmentsPerLevel = BMConfigurations.getSegmentsPerLevel(segments);
         int[] nodesPerSegment = BMConfigurations.getNodesPerSegment(segments);
 
-        String prefix = "rule exit agenda-group \"Group0\" salience 1000 when A(value == " + exitValue + ") then kcontext.getKieRuntime().halt();\nend\n";
+        String prefix = "rule exit agenda-group \"Group0\" salience 1000 when\n    A(value == " + exitValue + ")\nthen\n    kcontext.getKieRuntime().halt();\nend\n";
 
         System.out.println("\n");
         System.out.println("params (segments=" +segments + " agendaGroups=" + nbrAgendaGroups + " objectsPerType=" + nbrObjectsPerType + " : engineOption=" + engineOption + ")");

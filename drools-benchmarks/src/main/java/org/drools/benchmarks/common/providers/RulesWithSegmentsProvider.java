@@ -101,10 +101,10 @@ public class RulesWithSegmentsProvider implements DrlProvider {
                 drlBuilder.append(patterns[i][j]);
             }
             drlBuilder.append( "then\n" );
-            if(i==0) {
-                drlBuilder.append(firstConsequence);
-            } else if(i == patterns.length  -1) {
+            if(i == patterns.length -1) {
                 drlBuilder.append(lastConsequence);
+            } else if(i==0) {
+                drlBuilder.append(firstConsequence);
             } else if ( (i+1) % nbrRulesPerGroup == 0) {
                 // next rule would be a new group
                 drlBuilder.append(lastOfGroupConsequence);
