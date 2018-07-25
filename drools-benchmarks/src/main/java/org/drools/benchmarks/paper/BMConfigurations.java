@@ -21,7 +21,7 @@ public class BMConfigurations {
     @BenchmarkMode(Mode.SingleShotTime)
     @State(Scope.Thread)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @Fork(1)
+    @Fork(2)
     @Warmup(iterations = 30)
     @Measurement(iterations = 20)
     @Timeout(time = 10, timeUnit = TimeUnit.MINUTES)
@@ -31,7 +31,8 @@ public class BMConfigurations {
         //@Param({"reteoo"})
         protected String engineOption;
 
-        @Param({"8", "16", "32"})
+        //@Param({"8", "16", "32"})
+        @Param({"32"})
         protected int nbrObjectsPerType;
 
         @Param({"100"})
@@ -55,8 +56,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 2)
-    @Measurement(iterations = 2)
+    @Warmup(iterations = 100)
+    @Measurement(iterations = 50)
     public static class BMBaseConf_1 extends BMBaseConf {
         @Param({"1"})
         protected int nbrAgendaGroups;
@@ -74,8 +75,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 2)
-    @Measurement(iterations = 2)
+    @Warmup(iterations = 20)
+    @Measurement(iterations = 20)
     public static class BMBaseConf_2 extends BMBaseConf {
         //@Param({"1", "2"})
         @Param({"1"})
@@ -94,8 +95,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 2)
-    @Measurement(iterations = 2)
+    @Warmup(iterations = 10)
+    @Measurement(iterations = 10)
     public static class BMBaseConf_3 extends BMBaseConf {
         //@Param({"1", "4"})
         @Param({"1"})
@@ -114,8 +115,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 2)
-    @Measurement(iterations = 2)
+    @Warmup(iterations = 20)
+    @Measurement(iterations = 20)
     public static class BMBaseConf_4 extends BMBaseConf {
         //@Param({"1", "3"})
         @Param({"1"})
@@ -135,7 +136,7 @@ public class BMConfigurations {
     }
 
     @Warmup(iterations = 2)
-    @Measurement(iterations = 2)
+    @Measurement(iterations = 3)
     public static class BMBaseConf_5 extends BMBaseConf {
         //@Param({"1", "3"})
         @Param({"1"})
