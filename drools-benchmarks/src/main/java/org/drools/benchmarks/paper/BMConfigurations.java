@@ -75,7 +75,7 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 20)
+    @Warmup(iterations = 40)
     @Measurement(iterations = 20)
     public static class BMBaseConf_2 extends BMBaseConf {
         //@Param({"1", "2"})
@@ -95,7 +95,7 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 10)
+    @Warmup(iterations = 30)
     @Measurement(iterations = 10)
     public static class BMBaseConf_3 extends BMBaseConf {
         //@Param({"1", "4"})
@@ -135,8 +135,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 2)
-    @Measurement(iterations = 3)
+    @Warmup(iterations = 10)
+    @Measurement(iterations = 5)
     public static class BMBaseConf_5 extends BMBaseConf {
         //@Param({"1", "3"})
         @Param({"1"})

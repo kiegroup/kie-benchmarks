@@ -46,63 +46,63 @@ public class RepeatFireLastRule extends AbstractPaperBenchmark {
                            segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType , 100, false, nbrAgendaGroups-1, exitValue, engineOption);
     }
 
-//    public static class RepeatFireLastRule_1 extends BMConfigurations.BMBaseConf_1 {
-//
-//        public RepeatFireLastRule_1() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
-//
-//    public static class RepeatFireLastRule_2  extends BMConfigurations.BMBaseConf_2 {
-//        public RepeatFireLastRule_2() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
-//
-//    public static class RepeatFireLastRule_3 extends BMConfigurations.BMBaseConf_3 {
-//
-//        public RepeatFireLastRule_3() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
-//
-//    public static class RepeatFireLastRule_4 extends BMConfigurations.BMBaseConf_4 {
-//
-//        public RepeatFireLastRule_4() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
-//
-//    public static class RepeatFireLastRule_5 extends BMConfigurations.BMBaseConf_5 {
-//
-//        public RepeatFireLastRule_5() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
+    public static class RepeatFireLastRule_1 extends BMConfigurations.BMBaseConf_1 {
+
+        public RepeatFireLastRule_1() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
+
+    public static class RepeatFireLastRule_2  extends BMConfigurations.BMBaseConf_2 {
+        public RepeatFireLastRule_2() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
+
+    public static class RepeatFireLastRule_3 extends BMConfigurations.BMBaseConf_3 {
+
+        public RepeatFireLastRule_3() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
+
+    public static class RepeatFireLastRule_4 extends BMConfigurations.BMBaseConf_4 {
+
+        public RepeatFireLastRule_4() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
+
+    public static class RepeatFireLastRule_5 extends BMConfigurations.BMBaseConf_5 {
+
+        public RepeatFireLastRule_5() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
 
 }
