@@ -27,12 +27,12 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public void setupKieBase(String segments, int nbrAgendaGroups, int nbrObjectsPerType, int exitValue, String engineOption ) {
         String consequence = "    modify(a){setId(a.getId()+1), setOtherValue(a.getOtherValue()+1)};\n";
         consequence       += "    modify(last){setId(last.getId()+1)};\n";
-        consequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
+        //consequence       += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
         String firstConsequence = consequence;
 
         String lastConsequence = "    modify(a){setId(0), setOtherValue(a.getOtherValue()+1)};\n";;
         lastConsequence       += "    modify(last){setId(0)};\n";
-        lastConsequence     += "    System.out.println(\"fired \" + kcontext.getRule() );\n";
+        //lastConsequence     += "      System.out.println(\"fired \" + kcontext.getRule() );\n";
 
         String lastOfGroupConsequence = consequence;
         lastOfGroupConsequence       += "    " + IterateRulesAndFireEach.class.getName() + ".nextAgendaGroup(kcontext);\n";
@@ -51,7 +51,7 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public static class IterateRulesAndFireEach_1 extends BMConfigurations.BMBaseConf_1 {
 
         public IterateRulesAndFireEach_1() {
-            super(new RepeatFireFirstRule());
+            super(new IterateRulesAndFireEach());
         }
 
         @Benchmark
@@ -63,7 +63,7 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public static class IterateRulesAndFireEach_2  extends BMConfigurations.BMBaseConf_2 {
 
         public IterateRulesAndFireEach_2() {
-            super(new RepeatFireFirstRule());
+            super(new IterateRulesAndFireEach());
         }
 
         @Benchmark
@@ -75,7 +75,7 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public static class IterateRulesAndFireEach_3 extends BMConfigurations.BMBaseConf_3 {
 
         public IterateRulesAndFireEach_3() {
-            super(new RepeatFireFirstRule());
+            super(new IterateRulesAndFireEach());
         }
 
         @Benchmark
@@ -87,7 +87,7 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public static class IterateRulesAndFireEach_4 extends BMConfigurations.BMBaseConf_4 {
 
         public IterateRulesAndFireEach_4() {
-            super(new RepeatFireFirstRule());
+            super(new IterateRulesAndFireEach());
         }
 
         @Benchmark
@@ -99,7 +99,7 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
     public static class IterateRulesAndFireEach_5 extends BMConfigurations.BMBaseConf_5 {
 
         public IterateRulesAndFireEach_5() {
-            super(new RepeatFireFirstRule());
+            super(new IterateRulesAndFireEach());
         }
 
         @Benchmark
