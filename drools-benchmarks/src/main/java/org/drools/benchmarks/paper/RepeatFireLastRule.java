@@ -93,16 +93,16 @@ public class RepeatFireLastRule extends AbstractPaperBenchmark {
 //        }
 //    }
 //
-//    public static class RepeatFireLastRule_5 extends BMConfigurations.BMBaseConf_5 {
-//
-//        public RepeatFireLastRule_5() {
-//            super(new RepeatFireFirstRule());
-//        }
-//
-//        @Benchmark
-//        public void test() {
-//            strategy.test();
-//        }
-//    }
+    public static class RepeatFireLastRule_5 extends BMConfigurations.BMBaseConf_5 {
+
+        public RepeatFireLastRule_5() {
+            super(new RepeatFireFirstRule());
+        }
+
+        @Benchmark
+        public void test() {
+            strategy.test();
+        }
+    }
 
 }
