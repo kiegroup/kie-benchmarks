@@ -135,8 +135,8 @@ public class BMConfigurations {
         }
     }
 
-    @Warmup(iterations = 10)
-    @Measurement(iterations = 5)
+    @Warmup(iterations = 30)
+    @Measurement(iterations = 20)
     public static class BMBaseConf_5 extends BMBaseConf {
         //@Param({"1", "3"})
         @Param({"1"})

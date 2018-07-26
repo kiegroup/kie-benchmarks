@@ -45,66 +45,66 @@ public class RepeatFireFirstRule extends AbstractPaperBenchmark {
                            false,
                            segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType, -1, false, 0, exitValue, engineOption);
     }
-
-    public static class RepeatFireFirstRule_1 extends BMConfigurations.BMBaseConf_1 {
-        public RepeatFireFirstRule_1() {
-            super(new RepeatFireFirstRule());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class RepeatFireFirstRule_2 extends BMConfigurations.BMBaseConf_2 {
-
-        public RepeatFireFirstRule_2() {
-            super(new RepeatFireFirstRule());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-
-    }
-
-    public static class RepeatFireFirstRule_3 extends BMConfigurations.BMBaseConf_3 {
-
-        public RepeatFireFirstRule_3() {
-            super(new RepeatFireFirstRule());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class RepeatFireFirstRule_4 extends BMConfigurations.BMBaseConf_4 {
-
-        public RepeatFireFirstRule_4() {
-            super(new RepeatFireFirstRule());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class RepeatFireFirstRule_5 extends BMConfigurations.BMBaseConf_5 {
-
-        public RepeatFireFirstRule_5() {
-            super(new RepeatFireFirstRule());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
+//
+//    public static class RepeatFireFirstRule_1 extends BMConfigurations.BMBaseConf_1 {
+//        public RepeatFireFirstRule_1() {
+//            super(new RepeatFireFirstRule());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class RepeatFireFirstRule_2 extends BMConfigurations.BMBaseConf_2 {
+//
+//        public RepeatFireFirstRule_2() {
+//            super(new RepeatFireFirstRule());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//    }
+//
+//    public static class RepeatFireFirstRule_3 extends BMConfigurations.BMBaseConf_3 {
+//
+//        public RepeatFireFirstRule_3() {
+//            super(new RepeatFireFirstRule());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class RepeatFireFirstRule_4 extends BMConfigurations.BMBaseConf_4 {
+//
+//        public RepeatFireFirstRule_4() {
+//            super(new RepeatFireFirstRule());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class RepeatFireFirstRule_5 extends BMConfigurations.BMBaseConf_5 {
+//
+//        public RepeatFireFirstRule_5() {
+//            super(new RepeatFireFirstRule());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
 
 }

@@ -48,53 +48,53 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
                            segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType , -1, true, 0, exitValue, engineOption);
     }
 
-    public static class IterateRulesAndFireEach_1 extends BMConfigurations.BMBaseConf_1 {
-
-        public IterateRulesAndFireEach_1() {
-            super(new IterateRulesAndFireEach());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class IterateRulesAndFireEach_2  extends BMConfigurations.BMBaseConf_2 {
-
-        public IterateRulesAndFireEach_2() {
-            super(new IterateRulesAndFireEach());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class IterateRulesAndFireEach_3 extends BMConfigurations.BMBaseConf_3 {
-
-        public IterateRulesAndFireEach_3() {
-            super(new IterateRulesAndFireEach());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class IterateRulesAndFireEach_4 extends BMConfigurations.BMBaseConf_4 {
-
-        public IterateRulesAndFireEach_4() {
-            super(new IterateRulesAndFireEach());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class IterateRulesAndFireEach_1 extends BMConfigurations.BMBaseConf_1 {
+//
+//        public IterateRulesAndFireEach_1() {
+//            super(new IterateRulesAndFireEach());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class IterateRulesAndFireEach_2  extends BMConfigurations.BMBaseConf_2 {
+//
+//        public IterateRulesAndFireEach_2() {
+//            super(new IterateRulesAndFireEach());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class IterateRulesAndFireEach_3 extends BMConfigurations.BMBaseConf_3 {
+//
+//        public IterateRulesAndFireEach_3() {
+//            super(new IterateRulesAndFireEach());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class IterateRulesAndFireEach_4 extends BMConfigurations.BMBaseConf_4 {
+//
+//        public IterateRulesAndFireEach_4() {
+//            super(new IterateRulesAndFireEach());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
     public static class IterateRulesAndFireEach_5 extends BMConfigurations.BMBaseConf_5 {
 

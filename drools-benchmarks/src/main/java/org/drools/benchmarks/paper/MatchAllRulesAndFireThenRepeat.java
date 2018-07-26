@@ -50,64 +50,64 @@ public class MatchAllRulesAndFireThenRepeat extends AbstractPaperBenchmark {
                            segmentsPerLevel, nodesPerSegment, nbrAgendaGroups, nbrObjectsPerType, -1, false, 0, -1, engineOption);
     }
 
-    public static class MatchAllRulesAndFireThenRepeat_1 extends BMConfigurations.BMBaseConf_1 {
-        public MatchAllRulesAndFireThenRepeat_1() {
-            super(new MatchAllRulesAndFireThenRepeat());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class MatchAllRulesAndFireThenRepeat_2  extends BMConfigurations.BMBaseConf_2 {
-
-        public MatchAllRulesAndFireThenRepeat_2() {
-            super(new MatchAllRulesAndFireThenRepeat());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-
-    }
-
-    public static class MatchAllRulesAndFireThenRepeat_3 extends BMConfigurations.BMBaseConf_3 {
-
-        public MatchAllRulesAndFireThenRepeat_3() {
-            super(new MatchAllRulesAndFireThenRepeat());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class MatchAllRulesAndFireThenRepeat_4 extends BMConfigurations.BMBaseConf_4 {
-
-        public MatchAllRulesAndFireThenRepeat_4() {
-            super(new MatchAllRulesAndFireThenRepeat());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
-
-    public static class MatchAllRulesAndFireThenRepeat_5 extends BMConfigurations.BMBaseConf_5 {
-
-        public MatchAllRulesAndFireThenRepeat_5() {
-            super(new MatchAllRulesAndFireThenRepeat());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class MatchAllRulesAndFireThenRepeat_1 extends BMConfigurations.BMBaseConf_1 {
+//        public MatchAllRulesAndFireThenRepeat_1() {
+//            super(new MatchAllRulesAndFireThenRepeat());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class MatchAllRulesAndFireThenRepeat_2  extends BMConfigurations.BMBaseConf_2 {
+//
+//        public MatchAllRulesAndFireThenRepeat_2() {
+//            super(new MatchAllRulesAndFireThenRepeat());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//
+//    }
+//
+//    public static class MatchAllRulesAndFireThenRepeat_3 extends BMConfigurations.BMBaseConf_3 {
+//
+//        public MatchAllRulesAndFireThenRepeat_3() {
+//            super(new MatchAllRulesAndFireThenRepeat());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class MatchAllRulesAndFireThenRepeat_4 extends BMConfigurations.BMBaseConf_4 {
+//
+//        public MatchAllRulesAndFireThenRepeat_4() {
+//            super(new MatchAllRulesAndFireThenRepeat());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
+//
+//    public static class MatchAllRulesAndFireThenRepeat_5 extends BMConfigurations.BMBaseConf_5 {
+//
+//        public MatchAllRulesAndFireThenRepeat_5() {
+//            super(new MatchAllRulesAndFireThenRepeat());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
 }
