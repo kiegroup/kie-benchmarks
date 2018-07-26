@@ -16,7 +16,6 @@
 
 package org.drools.benchmarks.paper;
 
-import org.openjdk.jmh.annotations.Benchmark;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -96,16 +95,16 @@ public class IterateRulesAndFireEach extends AbstractPaperBenchmark {
 //        }
 //    }
 
-    public static class IterateRulesAndFireEach_5 extends BMConfigurations.BMBaseConf_5 {
-
-        public IterateRulesAndFireEach_5() {
-            super(new IterateRulesAndFireEach());
-        }
-
-        @Benchmark
-        public void test() {
-            strategy.test();
-        }
-    }
+//    public static class IterateRulesAndFireEach_5 extends BMConfigurations.BMBaseConf_5 {
+//
+//        public IterateRulesAndFireEach_5() {
+//            super(new IterateRulesAndFireEach());
+//        }
+//
+//        @Benchmark
+//        public void test() {
+//            strategy.test();
+//        }
+//    }
 
 }
