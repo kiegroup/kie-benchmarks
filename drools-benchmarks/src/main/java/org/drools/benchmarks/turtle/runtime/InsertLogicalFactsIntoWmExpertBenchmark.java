@@ -36,7 +36,7 @@ public class InsertLogicalFactsIntoWmExpertBenchmark extends AbstractSimpleRunti
         addFactsGenerator(new BasicInsertLogicalFactsIntoWmFactsGenerator(getGeneratorConfiguration()),5000);
     }
 
-//    @Benchmark
+    @Benchmark
     public KieSession timeFactsInsertionAndRulesFiring() {
         return insertFactsAndFireAllRules();
     }
