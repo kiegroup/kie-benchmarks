@@ -27,7 +27,7 @@ public class KieServerClient {
 	public static String containerId = "kieserver-assets";
 	
     private static ReleaseId releaseId = new ReleaseId("org.jbpm.test.performance", "kieserver-assets",
-            "7.34.0-SNAPSHOT");
+            "7.33.1-SNAPSHOT");
 
     private ProcessServicesClient processClient;
     private UserTaskServicesClient taskClient;
