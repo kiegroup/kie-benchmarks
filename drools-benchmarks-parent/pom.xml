@@ -15,7 +15,7 @@
   <name>Drools 8 Benchmarks Parent</name>
 
   <properties>
-    <version.freemaker>2.3.31</version.freemaker>
+    <version.freemaker>2.3.35</version.freemaker>
     <version.jaxb-api>2.0</version.jaxb-api>
     <version.org.drools>8.45.0-SNAPSHOT</version.org.drools>
   </properties>
